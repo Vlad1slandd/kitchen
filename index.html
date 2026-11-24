@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мастерская Кухни [PLACEHOLDER] | Премиальные кухни на заказ под ключ</title>
+  <meta name="description" content="Индивидуальное производство дизайнерских кухонь под ключ за 25-30 дней с гарантией 5 лет. Бесплатный 3D-проект и немецкая фурнитура Blum.">
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans & Playfair Display / Cormorant -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#D4AF37',
+              goldLight: '#E8CA65',
+              champagne: '#C8A97E',
+              dark: '#0C0E12',
+              cardDark: '#141820',
+              borderDark: '#232936',
+              surface: '#1A1F2B'
+            }
+          },
+          animation: {
+            'pulse-subtle': 'pulseSubtle 2.5s infinite',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            pulseSubtle: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+              '50%': { transform: 'scale(1.05)', opacity: '0.9' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0C0E12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #283042;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C8A97E;
+    }
+
+    /* Glassmorphism */
+    .glass-header {
+      background: rgba(12, 14, 18, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-card {
+      background: rgba(20, 24, 32, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card-hover {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200, 169, 126, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(200, 169, 126, 0.15);
+    }
+
+    /* Gradient texts */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #F3E7C4 0%, #D4AF37 50%, #AA8232 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* WhatsApp Pulse effect */
+    .wa-glow {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      animation: waPulse 2s infinite;
+    }
+    @keyframes waPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Custom range slider styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: #232936;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #D4AF37;
+      cursor: pointer;
+      border: 3px solid #0C0E12;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body class="bg-[#0C0E12] text-gray-200 font-sans selection:bg-brand-champagne selection:text-black antialiased overflow-x-hidden">
+
+  <!-- ========================================================= -->
+  <!-- 1. HEADER (ШАПКА)                                         -->
+  <!-- ========================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-header border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-gold to-amber-200/40 p-[1px] flex items-center justify-center shadow-lg shadow-amber-950/20">
+          <div class="w-full h-full bg-[#0C0E12] rounded-xl flex items-center justify-center group-hover:bg-[#141820] transition-colors">
+            <i data-lucide="utensils" class="w-5 h-5 text-brand-champagne"></i>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold tracking-wider text-white uppercase flex items-center gap-1">
+            [НАЗВАНИЕ БРЕНДА]
+          </span>
+          <span class="text-[10px] tracking-widest text-brand-champagne uppercase font-medium">Кухни авторского формата</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="#catalog" class="hover:text-brand-champagne transition-colors">Каталог</a>
+        <a href="#calculator" class="hover:text-brand-champagne transition-colors flex items-center gap-1.5">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-gold"></span>
+          </span>
+          Калькулятор
+        </a>
+        <a href="#advantages" class="hover:text-brand-champagne transition-colors">Преимущества</a>
+        <a href="#steps" class="hover:text-brand-champagne transition-colors">Этапы работы</a>
+        <a href="#reviews" class="hover:text-brand-champagne transition-colors">Отзывы</a>
+        <a href="#contacts" class="hover:text-brand-champagne transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Quick Actions & CTA -->
+      <div class="hidden lg:flex items-center gap-4">
+        <!-- Phone & Showroom status -->
+        <div class="text-right">
+          <a href="tel:+78000000000" class="text-sm font-bold text-white hover:text-brand-champagne transition-colors block">
+            +7 (800) 000-00-00
+          </a>
+          <span class="text-[11px] text-emerald-400 flex items-center justify-end gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Шоурум открыт до 21:00
+          </span>
+        </div>
+
+        <!-- WhatsApp Quick Link -->
+        <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BA%D1%83%D1%85%D0%BD%D0%B8" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 hover:text-emerald-300 transition-all duration-200" title="Написать в WhatsApp">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+        </a>
+
+        <!-- Measurement CTA Button -->
+        <button onclick="openModal('Вызов замерщика-дизайнера')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-black bg-gradient-to-r from-brand-gold via-brand-champagne to-amber-200 hover:opacity-95 shadow-lg shadow-amber-500/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+          Вызвать замерщика
+        </button>
+      </div>
+
+      <!-- Mobile Menu Trigger Button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none" aria-label="Меню">
+        <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-header border-b border-white/10 px-6 py-6 transition-all duration-300">
+      <nav class="flex flex-col gap-4 text-base font-medium">
+        <a href="#catalog" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-champagne">Каталог проектов</a>
+        <a href="#calculator" onclick="toggleMobileMenu()" class="text-brand-champagne font-semibold flex items-center justify-between">
+          Калькулятор стоимости
+          <span class="text-xs bg-brand-gold/20 text-brand-gold px-2 py-0.5 rounded-full">Online</span>
+        </a>
+        <a href="#advantages" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-champagne">Преимущества</a>
+        <a href="#steps" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-champagne">Этапы работы</a>
+        <a href="#reviews" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-champagne">Отзывы клиентов</a>
+        <a href="#contacts" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-champagne">Контакты и шоурум</a>
+      </nav>
+      <div class="mt-6 pt-6 border-t border-white/10 flex flex-col gap-3">
+        <a href="tel:+78000000000" class="text-lg font-bold text-white text-center">+7 (800) 000-00-00</a>
+        <button onclick="toggleMobileMenu(); openModal('Вызов замерщика-дизайнера')" class="w-full py-3 rounded-xl font-semibold text-black bg-gradient-to-r from-brand-gold to-brand-champagne text-center">
+          Вызвать замерщика с образцами
+        </button>
+        <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C" target="_blank" class="w-full py-3 rounded-xl font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 text-center flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          Написать в WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========================================================= -->
+  <!-- 2. HERO СЕКЦИЯ                                            -->
+  <!-- ========================================================= -->
+  <section class="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center justify-center overflow-hidden">
+    
+    <!-- Background Image with Dark Vignette & Gradient Overlays -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85" 
+        alt="Премиальная кухня на заказ интерьер" 
+        class="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000 ease-out"
+      />
+      <!-- Overlays for deep contrast and mood -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0C0E12] via-[#0C0E12]/85 to-[#0C0E12]/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0C0E12] via-transparent to-[#0C0E12]/70"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: USP and Main Text -->
+        <div class="lg:col-span-8 flex flex-col gap-6 text-left">
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md w-fit">
+            <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+            <span class="text-xs font-semibold text-brand-champagne tracking-wide uppercase">Собственная фабрика • Премиум сегмент</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+            Кухни на заказ <span class="gold-gradient-text font-serif italic font-normal">под ключ</span> по индивидуальным размерам за <span class="underline decoration-brand-gold/60 decoration-4 underline-offset-8">25-30 дней</span>
+          </h1>
+
+          <!-- Description -->
+          <p class="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed font-normal">
+            Воплощаем европейский дизайн и немецкую надежность. Фурнитура Blum с ресурсом 200 000 открываний, экологичные австрийские плиты EGGER и бесшовная каменная столешница.
+          </p>
+
+          <!-- Buttons CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#calculator" class="px-8 py-4 rounded-xl text-base font-bold text-black bg-gradient-to-r from-brand-gold via-brand-champagne to-amber-200 hover:brightness-110 shadow-xl shadow-amber-500/25 transition-all duration-300 flex items-center justify-center gap-3 group">
+              <i data-lucide="calculator" class="w-5 h-5 text-black transition-transform group-hover:rotate-12"></i>
+              <span>Рассчитать стоимость</span>
+            </a>
+
+            <a href="#catalog" class="px-8 py-4 rounded-xl text-base font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2.5">
+              <span>Смотреть каталог 2026</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-brand-champagne"></i>
+            </a>
+          </div>
+
+          <!-- Trust Badges Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-brand-champagne">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">5 лет гарантии</p>
+                <p class="text-xs text-gray-400">По официальному договору</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-brand-champagne">
+                <i data-lucide="box" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">Бесплатный 3D-проект</p>
+                <p class="text-xs text-gray-400">Дизайн за 24 часа</p>
+              </div>
+            </div>
+
+            <div class="col-span-2 sm:col-span-1 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-brand-champagne">
+                <i data-lucide="wrench" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">Монтаж за 1 день</p>
+                <p class="text-xs text-gray-400">Собственные штатные бригады</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Interactive Quick Promo Card / Floating Card -->
+        <div class="lg:col-span-4 hidden lg:block">
+          <div class="glass-card rounded-2xl p-6 relative border border-white/10 shadow-2xl overflow-hidden animate-float">
+            <!-- Decorative light -->
+            <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-brand-champagne">Спецпредложение месяца</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">-15%</span>
+              </div>
+
+              <!-- Mini Featured Image -->
+              <div class="relative h-44 rounded-xl overflow-hidden border border-white/10">
+                <img 
+                  src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" 
+                  alt="Интерьер кухни премиум" 
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[11px] font-medium text-white flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-gold"></i>
+                  Фурнитура Blum в подарок
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <h3 class="text-lg font-bold text-white">Закажите кухню до конца недели</h3>
+                <p class="text-xs text-gray-300 leading-relaxed">
+                  И зафиксируйте каменную мойку со смесителем или премиум-подсветку рабочей зоны в подарок!
+                </p>
+              </div>
+
+              <button onclick="openModal('Получить спецпредложение с подарком')" class="w-full py-3 rounded-xl text-sm font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors flex items-center justify-center gap-2">
+                <span>Зафиксировать бонус</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+
+              <p class="text-[10px] text-gray-400 text-center">Осталось 4 слота на бесплатный выезд замерщика</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll down indicator -->
+    <a href="#calculator" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400 hover:text-brand-champagne transition-colors z-20">
+      <span class="text-[11px] uppercase tracking-widest font-medium">Вниз к калькулятору</span>
+      <i data-lucide="chevrons-down" class="w-4 h-4 animate-bounce"></i>
+    </a>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 3. ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР СТОИМОСТИ КУХНИ ПОД КЛЮЧ    -->
+  <!-- ========================================================= -->
+  <section id="calculator" class="py-24 bg-[#0E1117] relative border-t border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-champagne text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+          Интерактивный конфигуратор
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Рассчитайте точную стоимость <span class="gold-gradient-text">вашей кухни</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Выберите форму, длину и материалы. Калькулятор пересчитывает бюджет в реальном времени с учетом действующих акций.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Calculator Steps (Left & Center, 8 cols) -->
+        <div class="lg:col-span-8 flex flex-col gap-8">
+          
+          <!-- STEP 1: Kitchen Shape -->
+          <div class="glass-card rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-bold text-brand-champagne uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">1</span>
+                Шаг 1: Форма кухонного гарнитура
+              </span>
+              <span class="text-xs text-gray-400">Выберите тип планировки</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4" id="shape-options">
+              <!-- Option 1: Straight -->
+              <button type="button" onclick="selectShape('straight', 1.0, this)" class="shape-btn group p-4 rounded-xl border border-brand-gold bg-brand-gold/10 text-left transition-all duration-200">
+                <div class="w-10 h-10 rounded-lg bg-black/40 flex items-center justify-center text-brand-champagne mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="minus" class="w-6 h-6"></i>
+                </div>
+                <div class="font-bold text-sm text-white">Прямая</div>
+                <div class="text-[11px] text-gray-400 mt-1">Классика для компактных комнат</div>
+              </button>
+
+              <!-- Option 2: Corner -->
+              <button type="button" onclick="selectShape('corner', 1.3, this)" class="shape-btn group p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/50 text-left transition-all duration-200">
+                <div class="w-10 h-10 rounded-lg bg-black/40 flex items-center justify-center text-gray-300 mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="corner-down-right" class="w-6 h-6"></i>
+                </div>
+                <div class="font-bold text-sm text-white">Угловая (Г-обр.)</div>
+                <div class="text-[11px] text-gray-400 mt-1">Популярная и вместительная</div>
+              </button>
+
+              <!-- Option 3: U-Shaped -->
+              <button type="button" onclick="selectShape('ushape', 1.6, this)" class="shape-btn group p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/50 text-left transition-all duration-200">
+                <div class="w-10 h-10 rounded-lg bg-black/40 flex items-center justify-center text-gray-300 mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="square" class="w-6 h-6"></i>
+                </div>
+                <div class="font-bold text-sm text-white">П-образная</div>
+                <div class="text-[11px] text-gray-400 mt-1">Максимум рабочей поверхности</div>
+              </button>
+
+              <!-- Option 4: Island -->
+              <button type="button" onclick="selectShape('island', 1.8, this)" class="shape-btn group p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/50 text-left transition-all duration-200">
+                <div class="w-10 h-10 rounded-lg bg-black/40 flex items-center justify-center text-gray-300 mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                </div>
+                <div class="font-bold text-sm text-white">С островом</div>
+                <div class="text-[11px] text-gray-400 mt-1">Премиум формат для студий</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Length Slider -->
+          <div class="glass-card rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-brand-champagne uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">2</span>
+                Шаг 2: Общая длина гарнитура
+              </span>
+              <div class="text-right">
+                <span id="length-display" class="text-2xl font-extrabold text-white">3.0</span>
+                <span class="text-sm font-semibold text-brand-champagne">погонных метров</span>
+              </div>
+            </div>
+
+            <div class="py-4">
+              <input 
+                id="length-slider" 
+                type="range" 
+                min="2.0" 
+                max="7.0" 
+                step="0.1" 
+                value="3.0" 
+                oninput="updateLength(this.value)"
+                class="w-full cursor-pointer"
+              />
+              <div class="flex justify-between text-xs text-gray-400 mt-3 font-medium">
+                <span>2.0 м (Минимум)</span>
+                <span>3.0 м (Стандарт)</span>
+                <span>4.5 м</span>
+                <span>6.0+ м (Крупная)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Facade Materials -->
+          <div class="glass-card rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-bold text-brand-champagne uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">3</span>
+                Шаг 3: Материал фасадов
+              </span>
+              <span class="text-xs text-gray-400">Влияет на эстетику и долговечность</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="facade-options">
+              
+              <!-- Facade 1: LDSP EGGER -->
+              <label class="facade-card relative flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="radio" name="facade" value="45000" data-name="ЛДСП EGGER (Австрия)" checked onchange="updateFacade(this)" class="mt-1 text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="font-bold text-sm text-white">ЛДСП EGGER (Австрия)</div>
+                  <div class="text-xs text-gray-400 mt-1">Влагостойкое премиум покрытие, класс E0.5. 140+ древесных и однотонных декоров.</div>
+                  <span class="inline-block mt-2 text-xs font-semibold text-brand-champagne">Категория: Комфорт</span>
+                </div>
+              </label>
+
+              <!-- Facade 2: MDF Soft-Touch Film -->
+              <label class="facade-card relative flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="radio" name="facade" value="62000" data-name="МДФ Soft-Touch в плёнке ПВХ" onchange="updateFacade(this)" class="mt-1 text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="font-bold text-sm text-white">МДФ Пленка Soft-Touch</div>
+                  <div class="text-xs text-gray-400 mt-1">Приятная бархатистая поверхность без отпечатков пальцев. Устойчива к пару.</div>
+                  <span class="inline-block mt-2 text-xs font-semibold text-brand-champagne">Категория: Комфорт+</span>
+                </div>
+              </label>
+
+              <!-- Facade 3: Italian Enamel -->
+              <label class="facade-card relative flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="radio" name="facade" value="84000" data-name="МДФ Итальянская Эмаль (Milesi)" onchange="updateFacade(this)" class="mt-1 text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="font-bold text-sm text-white">МДФ Итальянская Эмаль</div>
+                  <div class="text-xs text-gray-400 mt-1">7 слоёв грунта и лака Milesi. Глубокий матовый или глянец. Выбор любого цвета по NCS/RAL.</div>
+                  <span class="inline-block mt-2 text-xs font-semibold text-amber-300">Категория: Премиум (Хит)</span>
+                </div>
+              </label>
+
+              <!-- Facade 4: Solid Wood / Veneer -->
+              <label class="facade-card relative flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="radio" name="facade" value="115000" data-name="Шпон дуба / Массив ясеня" onchange="updateFacade(this)" class="mt-1 text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="font-bold text-sm text-white">Шпон дуба / Натуральный массив</div>
+                  <div class="text-xs text-gray-400 mt-1">Благородная природная текстура древесины, защищенная полиуретановым лаком.</div>
+                  <span class="inline-block mt-2 text-xs font-semibold text-amber-400">Категория: Люкс & Эко</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 4: Countertop -->
+          <div class="glass-card rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-bold text-brand-champagne uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">4</span>
+                Шаг 4: Столешница
+              </span>
+              <span class="text-xs text-gray-400">Основа рабочей зоны</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="countertop-options">
+              
+              <!-- Countertop 1: HPL -->
+              <label class="flex flex-col p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <div class="flex items-center gap-2 mb-2">
+                  <input type="radio" name="countertop" value="18000" data-name="Влагостойкий HPL пластик 38 мм" checked onchange="updateCountertop(this)" class="text-brand-gold focus:ring-brand-gold">
+                  <span class="font-bold text-sm text-white">HPL пластик 38 мм</span>
+                </div>
+                <p class="text-xs text-gray-400 flex-1">Влагостойкая плита с защитным термостойким слоем. Имитация камня или дерева.</p>
+                <span class="text-xs font-semibold text-gray-300 mt-3 pt-2 border-t border-white/5">+18 000 ₽ / м.п.</span>
+              </label>
+
+              <!-- Countertop 2: Acrylic -->
+              <label class="flex flex-col p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <div class="flex items-center gap-2 mb-2">
+                  <input type="radio" name="countertop" value="38000" data-name="Искусственный акриловый камень (Grandex)" onchange="updateCountertop(this)" class="text-brand-gold focus:ring-brand-gold">
+                  <span class="font-bold text-sm text-white">Акриловый камень</span>
+                </div>
+                <p class="text-xs text-gray-400 flex-1">100% бесшовная стыковка без видимых швов. Литая мойка в цвет столешницы.</p>
+                <span class="text-xs font-semibold text-brand-champagne mt-3 pt-2 border-t border-white/5">+38 000 ₽ / м.п.</span>
+              </label>
+
+              <!-- Countertop 3: Quartz -->
+              <label class="flex flex-col p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <div class="flex items-center gap-2 mb-2">
+                  <input type="radio" name="countertop" value="55000" data-name="Кварцевый агломерат (Caesarstone)" onchange="updateCountertop(this)" class="text-brand-gold focus:ring-brand-gold">
+                  <span class="font-bold text-sm text-white">Кварцевый агломерат</span>
+                </div>
+                <p class="text-xs text-gray-400 flex-1">Не царапается ножом, не боится горячей посуды и вина. Вечный премиум материал.</p>
+                <span class="text-xs font-semibold text-amber-300 mt-3 pt-2 border-t border-white/5">+55 000 ₽ / м.п.</span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 5: Add-ons & Fittings -->
+          <div class="glass-card rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-bold text-brand-champagne uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">5</span>
+                Шаг 5: Фурнитура и опции комфорта
+              </span>
+              <span class="text-xs text-gray-400">Выберите дополнительные модули</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              
+              <!-- Checkbox 1 -->
+              <label class="flex items-start gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="checkbox" id="opt-blum" value="35000" onchange="calculateTotal()" checked class="mt-1 rounded text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="text-sm font-bold text-white">Фурнитура Blum Legrabox</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Австрийские доводчики с плавным ходом</div>
+                  <div class="text-xs text-brand-champagne font-semibold mt-1">+35 000 ₽</div>
+                </div>
+              </label>
+
+              <!-- Checkbox 2 -->
+              <label class="flex items-start gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="checkbox" id="opt-led" value="18000" onchange="calculateTotal()" checked class="mt-1 rounded text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="text-sm font-bold text-white">Умная LED-подсветка</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Скрытый профиль с сенсорным взмахом</div>
+                  <div class="text-xs text-brand-champagne font-semibold mt-1">+18 000 ₽</div>
+                </div>
+              </label>
+
+              <!-- Checkbox 3 -->
+              <label class="flex items-start gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-gold/40 cursor-pointer transition-all">
+                <input type="checkbox" id="opt-tech" value="45000" onchange="calculateTotal()" class="mt-1 rounded text-brand-gold focus:ring-brand-gold">
+                <div>
+                  <div class="text-sm font-bold text-white">Пакет встройки техники</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Монтаж и юстировка вытяжки, плиты, ПММ</div>
+                  <div class="text-xs text-brand-champagne font-semibold mt-1">+45 000 ₽</div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sticky Summary & WhatsApp Lead Form (Right, 4 cols) -->
+        <div class="lg:col-span-4 sticky top-28">
+          <div class="glass-card rounded-2xl p-6 sm:p-7 border border-brand-gold/30 shadow-2xl relative overflow-hidden">
+            
+            <div class="absolute top-0 right-0 bg-gradient-to-l from-brand-gold/20 to-transparent w-32 h-32 rounded-bl-full pointer-events-none"></div>
+
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <span class="text-xs uppercase font-extrabold tracking-wider text-gray-400">Предварительный расчет</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-semibold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Скидка -15% учтена
+              </span>
+            </div>
+
+            <!-- Total Price Display with Animation -->
+            <div class="py-6 text-center">
+              <div class="text-xs text-gray-400 uppercase tracking-widest font-medium">Ориентировочная стоимость:</div>
+              <div class="mt-2 text-3xl sm:text-4xl font-extrabold text-white tracking-tight flex items-center justify-center gap-1">
+                <span class="text-gray-400 text-2xl font-normal">от</span>
+                <span id="total-price" class="gold-gradient-text">245 000</span>
+                <span class="text-brand-champagne font-normal text-2xl">₽</span>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Включает доставку, сборку и гарантию 5 лет</p>
+            </div>
+
+            <!-- Parameters Summary List -->
+            <div class="bg-black/30 rounded-xl p-4 space-y-2 text-xs border border-white/5 mb-6">
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Форма:</span>
+                <span id="summary-shape" class="font-semibold text-white">Прямая</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Длина:</span>
+                <span id="summary-length" class="font-semibold text-white">3.0 м.п.</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Фасады:</span>
+                <span id="summary-facade" class="font-semibold text-white truncate max-w-[170px]">ЛДСП EGGER</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Столешница:</span>
+                <span id="summary-countertop" class="font-semibold text-white truncate max-w-[170px]">HPL пластик</span>
+              </div>
+              <div class="flex justify-between text-gray-300 pt-2 border-t border-white/5">
+                <span class="text-gray-400">Срок изготовления:</span>
+                <span class="font-bold text-brand-champagne">25-30 рабочих дней</span>
+              </div>
+            </div>
+
+            <!-- Quick WhatsApp Send / Submit Form -->
+            <div class="space-y-3">
+              <button 
+                onclick="sendCalculationToWhatsApp()" 
+                class="w-full py-4 rounded-xl text-sm font-bold text-black bg-gradient-to-r from-brand-gold via-brand-champagne to-amber-200 hover:brightness-110 shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2 group"
+              >
+                <i data-lucide="message-circle" class="w-5 h-5 text-black"></i>
+                <span>Получить расчет в WhatsApp</span>
+              </button>
+
+              <button 
+                onclick="openModalWithCalculation()" 
+                class="w-full py-3.5 rounded-xl text-xs font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors flex items-center justify-center gap-2"
+              >
+                <i data-lucide="file-text" class="w-4 h-4 text-brand-champagne"></i>
+                <span>Зафиксировать цену и 3D-проект</span>
+              </button>
+            </div>
+
+            <div class="mt-4 flex items-center justify-center gap-2 text-[11px] text-gray-400">
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-champagne"></i>
+              <span>Конфиденциально. Без спама и навязчивых звонков.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 4. КАТАЛОГ / ПОРТФОЛИО ВЫПОЛНЕННЫХ РАБОТ                 -->
+  <!-- ========================================================= -->
+  <section id="catalog" class="py-24 relative bg-[#0C0E12]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header & Filter Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-champagne text-xs uppercase tracking-wider font-semibold mb-3">
+            <i data-lucide="image" class="w-3.5 h-3.5"></i>
+            Реализованные объекты
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            Каталог авторских проектов
+          </h2>
+          <p class="mt-3 text-gray-400 text-base max-w-xl">
+            Каждая кухня спроектирована под конкретную геометрию помещения, рост владельцев и сценарии готовки.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+          <button onclick="filterCatalog('all', this)" class="filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-brand-gold text-black transition-all">Все</button>
+          <button onclick="filterCatalog('modern', this)" class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">Современный</button>
+          <button onclick="filterCatalog('loft', this)" class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">Лофт</button>
+          <button onclick="filterCatalog('classic', this)" class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">Неоклассика</button>
+          <button onclick="filterCatalog('scandi', this)" class="filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">Сканди</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        
+        <!-- Project 1: Modern / Minimalist -->
+        <div class="project-card glass-card glass-card-hover rounded-2xl overflow-hidden group" data-category="modern">
+          <div class="relative h-72 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80" 
+              alt="Кухня Монпелье графит минимализм" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-brand-champagne border border-white/10">
+              Современный минимализм
+            </span>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
+              Сдан за 26 дней
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-champagne transition-colors">Проект «Монпелье»</h3>
+              <div class="text-brand-gold font-extrabold text-lg">от 340 000 ₽</div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-4 line-clamp-2">
+              Фасады глубокого матового графита с интегрированным профилем Gola без ручек. Островная зона с барной стойкой.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-5">
+              <div><span class="text-gray-400">Габариты:</span> 3.6 × 2.1 м</div>
+              <div><span class="text-gray-400">Фасады:</span> Эмаль Soft-Touch</div>
+              <div><span class="text-gray-400">Столешница:</span> Кварц 20 мм</div>
+              <div><span class="text-gray-400">Фурнитура:</span> Blum Tip-On</div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="orderSimilarProject('Монпелье', '340 000 ₽')" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors text-center">
+                Хочу такую же
+              </button>
+              <button onclick="openProjectDetails('Монпелье', 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85', '340 000 ₽', '3.6 × 2.1 м', 'Итальянская эмаль Milesi (NCS 7500-N)', 'Кварцевый агломерат Caesarstone', 'Blum Legrabox с электроприводом Servo-Drive', 'Кухня разработана для загородного дома. Остров оснащен варочной поверхностью со встроенной вытяжкой и винным шкафом.')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors" title="Подробнее о проекте">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Loft -->
+        <div class="project-card glass-card glass-card-hover rounded-2xl overflow-hidden group" data-category="loft">
+          <div class="relative h-72 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1000&q=80" 
+              alt="Кухня Нордик Лофт металл бетон" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-brand-champagne border border-white/10">
+              Индустриальный лофт
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-champagne transition-colors">Проект «Бруклин»</h3>
+              <div class="text-brand-gold font-extrabold text-lg">от 285 000 ₽</div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-4 line-clamp-2">
+              Фактура бетона и черного матового металла. Встроенные открытые витрины с закаленным стеклом и подсветкой 3000K.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-5">
+              <div><span class="text-gray-400">Габариты:</span> 3.2 м (прямая)</div>
+              <div><span class="text-gray-400">Фасады:</span> Fundermax HPL</div>
+              <div><span class="text-gray-400">Столешница:</span> Компакт-плита</div>
+              <div><span class="text-gray-400">Фурнитура:</span> Hettich Sensys</div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="orderSimilarProject('Бруклин', '285 000 ₽')" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors text-center">
+                Хочу такую же
+              </button>
+              <button onclick="openProjectDetails('Бруклин', 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=85', '285 000 ₽', '3.2 м (прямая)', 'HPL пластик с текстурой шлифованного бетона', 'Компакт-плита HPL 12 мм черная основа', 'Hettich AvanTech YOU с LED', 'Идеально вписана в кирпичные стены апартаментов. Интегрирована акустическая система и скрытый бар.')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors" title="Подробнее о проекте">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Neoclassic -->
+        <div class="project-card glass-card glass-card-hover rounded-2xl overflow-hidden group" data-category="classic">
+          <div class="relative h-72 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1000&q=80" 
+              alt="Кухня Венеция Неоклассика с фрезеровкой" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-brand-champagne border border-white/10">
+              Изящная неоклассика
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-champagne transition-colors">Проект «Венеция»</h3>
+              <div class="text-brand-gold font-extrabold text-lg">от 410 000 ₽</div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-4 line-clamp-2">
+              Тонкая фрезеровка рамочных фасадов, оттенок слоновой кости, латунные ручки Buster+Punch и карниз под потолок.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-5">
+              <div><span class="text-gray-400">Габариты:</span> 4.1 × 1.8 м</div>
+              <div><span class="text-gray-400">Фасады:</span> Массив + Эмаль</div>
+              <div><span class="text-gray-400">Столешница:</span> Мрамор Calacatta</div>
+              <div><span class="text-gray-400">Фурнитура:</span> Blum с доводчиками</div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="orderSimilarProject('Венеция', '410 000 ₽')" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors text-center">
+                Хочу такую же
+              </button>
+              <button onclick="openProjectDetails('Венеция', 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=85', '410 000 ₽', '4.1 × 1.8 м (угловая с буфетом)', 'Массив ясеня с патинированием, эмаль 5 слоев', 'Натуральный мрамор Calacatta Gold 30 мм', 'Blum CLIP top BLUMOTION с пожизненной гарантией', 'Кухня с витринами для фамильного фарфора и встроенным шкафом для специй с подсветкой.')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors" title="Подробнее о проекте">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Scandi -->
+        <div class="project-card glass-card glass-card-hover rounded-2xl overflow-hidden group" data-category="scandi">
+          <div class="relative h-72 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" 
+              alt="Скандинавская светлая кухня с деревом" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-brand-champagne border border-white/10">
+              Сканди & Эко
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-champagne transition-colors">Проект «Стокгольм»</h3>
+              <div class="text-brand-gold font-extrabold text-lg">от 260 000 ₽</div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-4 line-clamp-2">
+              Гармония теплого отбеленного дуба и белых матовых фасадов. Открытые полки для трав и уютной посуды.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-5">
+              <div><span class="text-gray-400">Габариты:</span> 3.0 × 1.6 м</div>
+              <div><span class="text-gray-400">Фасады:</span> Шпон + EGGER</div>
+              <div><span class="text-gray-400">Столешница:</span> Массив дуба / HPL</div>
+              <div><span class="text-gray-400">Фурнитура:</span> Blum Antaro</div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="orderSimilarProject('Стокгольм', '260 000 ₽')" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors text-center">
+                Хочу такую же
+              </button>
+              <button onclick="openProjectDetails('Стокгольм', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85', '260 000 ₽', '3.0 × 1.6 м', 'Комбинация матового белого PerfectSense и шпона беленого дуба', 'Термостойкий HPL с глубокой древесной синхропорой', 'Blum Tandembox с плавным закрыванием', 'Проект реализован для семьи с детьми. Материалы гипоаллергенны и легко моются.')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors" title="Подробнее о проекте">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: Modern Island Luxury -->
+        <div class="project-card glass-card glass-card-hover rounded-2xl overflow-hidden group" data-category="modern">
+          <div class="relative h-72 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80" 
+              alt="Кухня Оникс остров премиум" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-brand-champagne border border-white/10">
+              Островная архитектура
+            </span>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
+              Флагман
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-champagne transition-colors">Проект «Оникс Black»</h3>
+              <div class="text-brand-gold font-extrabold text-lg">от 520 000 ₽</div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-4 line-clamp-2">
+              Монолитный центральный остров с переходом камня на боковые стенки (Waterfall). Колонны со скрытой техникой Miele.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-5">
+              <div><span class="text-gray-400">Габариты:</span> 4.5 м + Остров 2.4 м</div>
+              <div><span class="text-gray-400">Фасады:</span> Керамика + Эмаль</div>
+              <div><span class="text-gray-400">Столешница:</span> Кварц с подсветкой</div>
+              <div><span class="text-gray-400">Фурнитура:</span> Blum Servo-Drive</div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="orderSimilarProject('Оникс Black', '520 000 ₽')" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors text-center">
+                Хочу такую же
+              </button>
+              <button onclick="openProjectDetails('Оникс Black', 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85', '520 000 ₽', '4.5 м + Остров 2.4 м', 'Тонкая широкоформатная керамика Laminam на алюминиевой раме', 'Кварцит Nero Marquina с обработкой фаски под 45 градусов', 'Электроприводы ящиков и подъемников Blum Servo-Drive', 'Проект для пентхауса с панорамными окнами. Вся мелкая бытовая техника скрыта в карманные двери (pocket doors).')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors" title="Подробнее о проекте">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Japandi / Minimalist -->
+        <div class="project-card glass-card glass-card-hover rounded-2xl overflow-hidden group" data-category="modern">
+          <div class="relative h-72 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1000&q=80" 
+              alt="Кухня Киото джапанди рейки дерево" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-brand-champagne border border-white/10">
+              Стиль Japandi
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-champagne transition-colors">Проект «Киото»</h3>
+              <div class="text-brand-gold font-extrabold text-lg">от 380 000 ₽</div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-4 line-clamp-2">
+              Вертикальные реечные элементы из шпона ясеня, парящий цоколь со скрытой подсветкой пола и матовые бежевые плоскости.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-5">
+              <div><span class="text-gray-400">Габариты:</span> 3.8 × 2.4 м</div>
+              <div><span class="text-gray-400">Фасады:</span> Реечный массив + Эмаль</div>
+              <div><span class="text-gray-400">Столешница:</span> Акрил Grandex</div>
+              <div><span class="text-gray-400">Фурнитура:</span> Blum Legrabox</div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="orderSimilarProject('Киото', '380 000 ₽')" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors text-center">
+                Хочу такую же
+              </button>
+              <button onclick="openProjectDetails('Киото', 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1200&q=85', '380 000 ₽', '3.8 × 2.4 м', 'Фрезерованные реечные панели из шпона американского ореха', 'Акриловый камень Grandex со скрытой интегрированной мойкой', 'Blum Legrabox орион-серый матовый', 'Атмосфера спокойствия и чистоты. Встроена кофе-станция со складными фасадами.')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors" title="Подробнее о проекте">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Banner: Individual Project Request -->
+      <div class="mt-16 glass-card rounded-2xl p-8 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <h3 class="text-xl font-bold text-white">Есть собственный референс или дизайн-проект?</h3>
+          <p class="text-sm text-gray-400 max-w-xl">
+            Отправьте нам фото из Pinterest, эскиз от дизайнера или технический план БТИ — сделаем бесплатную детализацию и расчет за 2 часа.
+          </p>
+        </div>
+        <div class="flex items-center gap-4 shrink-0">
+          <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D1%81%D0%BB%D0%B0%D1%82%D1%8C%20%D1%81%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D0%B5%D1%82" target="_blank" class="px-6 py-3.5 rounded-xl font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all flex items-center gap-2">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            Отправить в WhatsApp
+          </a>
+          <button onclick="openModal('Расчет по своему дизайн-проекту')" class="px-6 py-3.5 rounded-xl font-bold text-black bg-brand-champagne hover:bg-brand-gold transition-colors">
+            Загрузить проект
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 5. ПРЕИМУЩЕСТВА И СТАНДАРТЫ КАЧЕСТВА                     -->
+  <!-- ========================================================= -->
+  <section id="advantages" class="py-24 bg-[#0E1117] relative border-t border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-champagne text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+          Инженерия & Материалы
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Почему клиенты выбирают нас, <br class="hidden sm:block">а не типовые салоны
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Мы объединили фабричную автоматизацию с ручной ювелирной подгонкой каждого стыка.
+        </p>
+      </div>
+
+      <!-- Advantages 6-grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-gold/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="cpu" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Немецкие ЧПУ Homag</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Распил и присадка отверстий выполняются на немецких роботизированных центрах с точностью до 0.1 мм. Никаких перекосов и щелей при сборке.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-gold/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="droplet-off" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">PUR-кромление 100% влагозащита</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Используем полиуретановый водостойкий клей вместо дешевого EVA. Кромка не отклеивается от пара чайника и влаги в зоне раковины.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-gold/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="award" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Оригинальный австрийский Blum</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Прямые поставки оригинальных петель и направляющих Blum и Hettich. Плавное бесшумное закрывание с пожизненной заводской гарантией.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-gold/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Лазерный замер в 3D-плоскостях</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Инженер фиксирует кривизну стен, углы, расположение розеток, вентиляции и труб. Мебель встает монолитно без щелей и зазоров.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-gold/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="clock" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Сроки по договору со штрафом</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Фиксируем дату монтажа в договоре. В случае задержки выплачиваем неустойку 0.5% за каждый день. 98.4% кухонь сдаем день-в-день.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-gold/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Уборка строительным пылесосом</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Монтажники вывозят весь упаковочный картон, полируют фасады и сдают абсолютно готовую к использованию чистую кухню.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 6. ЭТАПЫ РАБОТЫ (ОТ ИДЕИ ДО ГОТОВОЙ КУХНИ)               -->
+  <!-- ========================================================= -->
+  <section id="steps" class="py-24 bg-[#0C0E12] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-champagne text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="git-commit" class="w-3.5 h-3.5"></i>
+          Прозрачный процесс
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          5 шагов к вашей <span class="gold-gradient-text">идеальной кухне</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Берем на себя всё: от первого эскиза до подключения техники и выноса мусора.
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Connecting Line for desktop -->
+        <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-gold/20 via-brand-champagne/40 to-brand-gold/20 -translate-y-8 z-0"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+          
+          <!-- Step 1 -->
+          <div class="glass-card rounded-2xl p-6 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold to-amber-200 text-black font-extrabold text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 mb-6 shrink-0">
+              01
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Заявка и 3D-проект</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Обсуждаем пожелания, бюджет и привычки. Архитектор создает реалистичный 3D-рендер в течение 24 часов.
+            </p>
+            <span class="mt-4 text-[11px] font-semibold text-brand-champagne">Срок: 1 день</span>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-card rounded-2xl p-6 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold to-amber-200 text-black font-extrabold text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 mb-6 shrink-0">
+              02
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Лазерный замер</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Инженер привозит 200+ реальных образцов фасадов и камня на объект. Выбираете материалы при вашем освещении.
+            </p>
+            <span class="mt-4 text-[11px] font-semibold text-brand-champagne">Срок: В удобное время</span>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-card rounded-2xl p-6 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold to-amber-200 text-black font-extrabold text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 mb-6 shrink-0">
+              03
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Производство</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Высокоточный распил, многослойная покраска фасадов в беспылевой камере и контрольная сборка каркасов в цеху.
+            </p>
+            <span class="mt-4 text-[11px] font-semibold text-brand-champagne">Срок: 20-25 дней</span>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="glass-card rounded-2xl p-6 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold to-amber-200 text-black font-extrabold text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 mb-6 shrink-0">
+              04
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Монтаж за 1 день</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Доставляем в жесткой упаковке. Штатная бригада собирает кухню, подключает мойку, смеситель, варочную панель и подсветку.
+            </p>
+            <span class="mt-4 text-[11px] font-semibold text-brand-champagne">Срок: 1-2 дня</span>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="glass-card rounded-2xl p-6 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold to-amber-200 text-black font-extrabold text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 mb-6 shrink-0">
+              05
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Сдача и гарантия 5 лет</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Проверяем каждый зазор, доводчик и уровень горизонта. Клининг рабочей зоны и подписание акта приемки.
+            </p>
+            <span class="mt-4 text-[11px] font-semibold text-emerald-400">Гарантия 5 лет</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Action Banner under Steps -->
+      <div class="mt-14 text-center">
+        <button onclick="openModal('Запись на бесплатный замер и 3D-проект')" class="px-8 py-4 rounded-xl text-sm font-bold text-black bg-gradient-to-r from-brand-gold to-brand-champagne hover:brightness-110 shadow-xl shadow-amber-500/20 transition-all inline-flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>Записаться на замер с чемоданом образцов</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 7. ОТЗЫВЫ КЛИЕНТОВ                                        -->
+  <!-- ========================================================= -->
+  <section id="reviews" class="py-24 bg-[#0E1117] relative border-t border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-champagne text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="star" class="w-3.5 h-3.5 text-amber-300 fill-amber-300"></i>
+          Честные отзывы
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Что говорят владельцы <span class="gold-gradient-text">наших кухонь</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Средняя оценка 4.95 на основе более 380 сданных проектов в Москве и МО.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border border-white/10 hover:border-brand-gold/40 transition-all">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <span class="text-xs text-gray-400 ml-2">Вчера</span>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed mb-6 italic">
+              «Заказывали проект в стиле минимализм с островом. Больше всего переживали за стык каменной столешницы у окна — мастера сделали абсолютно невидимый переход! Доводчики Blum работают как швейцарские часы. Сдали на 3 дня раньше срока.»
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-amber-200/50 flex items-center justify-center font-bold text-black text-sm">
+              АМ
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Артем и Марина</div>
+              <div class="text-xs text-gray-400">ЖК «Сердце Столицы» • Кухня 4.2 м</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border border-white/10 hover:border-brand-gold/40 transition-all">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <span class="text-xs text-gray-400 ml-2">14 дней назад</span>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed mb-6 italic">
+              «Очень понравился подход на замере: дизайнер приехал с двумя чемоданами фасадов, мы приложили образцы к нашему керамограниту и сразу подобрали идеальный бежево-песочный тон эмали. Монтажники собрали всё за один день, даже мусор за собой убрали.»
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-amber-200/50 flex items-center justify-center font-bold text-black text-sm">
+              ЕС
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Елена Смирнова</div>
+              <div class="text-xs text-gray-400">Коттеджный поселок «Миллениум Парк»</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border border-white/10 hover:border-brand-gold/40 transition-all">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <span class="text-xs text-gray-400 ml-2">Месяц назад</span>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed mb-6 italic">
+              «Сравнивал с тремя крупными сетевыми салонами — здесь цена оказалась на 20% приятнее при том же уровне австрийской фурнитуры и покраске фасадов в 7 слоев. Отдельный респект за умную скрытую подсветку с датчиком движения руки!»
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-amber-200/50 flex items-center justify-center font-bold text-black text-sm">
+              ДВ
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Дмитрий Васильев</div>
+              <div class="text-xs text-gray-400">ЖК «Символ» • Проект «Бруклин»</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 8. КОНТАКТЫ & ШОУРУМ & ФОРМА ОБРАТНОЙ СВЯЗИ             -->
+  <!-- ========================================================= -->
+  <section id="contacts" class="py-24 bg-[#0C0E12] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Contacts & Showroom info -->
+        <div class="lg:col-span-6 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-champagne text-xs uppercase tracking-wider font-semibold mb-3">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+              Флагманский шоурум
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+              Приглашаем в наш <span class="gold-gradient-text">шоурум кухонь</span>
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8">
+              Приезжайте на чашку свежесваренного кофе: протестируйте доводчики, оцените тактильность покрытий и вместе с ведущим дизайнером спроектируйте эргономику вашей будущей кухни.
+            </p>
+
+            <div class="space-y-6">
+              
+              <!-- Address -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-champagne shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400">Адрес шоурума:</div>
+                  <div class="text-sm font-bold text-white">[г. Москва, Ленинский проспект, д. [PLACEHOLDER]]</div>
+                  <div class="text-xs text-brand-champagne mt-0.5">Бесплатная закрытая парковка для клиентов</div>
+                </div>
+              </div>
+
+              <!-- Phone & Schedule -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-champagne shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400">Телефон фабрики:</div>
+                  <a href="tel:+78000000000" class="text-sm font-bold text-white hover:text-brand-champagne transition-colors">
+                    +7 (800) 000-00-00 (Ежедневно 09:00 - 21:00)
+                  </a>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-champagne shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400">Электронная почта:</div>
+                  <a href="mailto:info@kitchen-studio-placeholder.ru" class="text-sm font-bold text-white hover:text-brand-champagne transition-colors">
+                    info@[НАЗВАНИЕ-БРЕНДА].ru
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Direct Messenger Links -->
+          <div class="mt-8 pt-8 border-t border-white/10">
+            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Быстрая связь в мессенджерах:</div>
+            <div class="flex items-center gap-3">
+              <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%B2%20%D1%88%D0%BE%D1%83%D1%80%D1%83%D0%BC" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 text-xs font-bold transition-all flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                WhatsApp чат
+              </a>
+              <a href="https://t.me/placeholder" target="_blank" class="px-4 py-2.5 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 hover:bg-sky-500/20 text-xs font-bold transition-all flex items-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                Telegram канал
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Fast Consultation & Measurement Lead Form -->
+        <div class="lg:col-span-6">
+          <div class="glass-card rounded-2xl p-8 border border-white/10 shadow-2xl relative">
+            <h3 class="text-2xl font-bold text-white mb-2">Запишитесь на визит в шоурум или замер</h3>
+            <p class="text-xs text-gray-300 mb-6">
+              Заполните форму, и мы перезвоним в течение 10 минут для уточнения удобного времени.
+            </p>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Ваше имя</label>
+                <input 
+                  type="text" 
+                  required 
+                  placeholder="Константин" 
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold text-sm transition-colors"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Номер телефона</label>
+                <input 
+                  type="tel" 
+                  required 
+                  placeholder="+7 (999) 000-00-00" 
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold text-sm transition-colors"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Что вас интересует?</label>
+                <select class="w-full px-4 py-3 rounded-xl bg-[#141820] border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                  <option value="measurement">Бесплатный выезд дизайнера-замерщика</option>
+                  <option value="showroom">Визит в шоурум на консультацию с дизайнером</option>
+                  <option value="calculation">Расчет стоимости по моему эскизу</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Комментарий или ссылка на дизайн (необязательно)</label>
+                <textarea 
+                  rows="2" 
+                  placeholder="Новостройка ЖК Символ, черновая отделка, хотим угловую кухню..." 
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold text-sm transition-colors"
+                ></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  class="w-full py-4 rounded-xl text-sm font-bold text-black bg-gradient-to-r from-brand-gold via-brand-champagne to-amber-200 hover:brightness-110 shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+                >
+                  <i data-lucide="send" class="w-4 h-4 text-black"></i>
+                  <span>Отправить заявку и зафиксировать скидку 15%</span>
+                </button>
+              </div>
+
+              <p class="text-[10px] text-gray-500 text-center leading-normal">
+                Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с политикой конфиденциальности.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 9. FOOTER (ПОДВАЛ)                                        -->
+  <!-- ========================================================= -->
+  <footer class="bg-[#08090C] border-t border-white/5 py-12 text-sm text-gray-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-white/5">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-brand-gold/20 flex items-center justify-center text-brand-champagne">
+              <i data-lucide="utensils" class="w-4 h-4"></i>
+            </div>
+            <span class="text-base font-extrabold text-white uppercase">[НАЗВАНИЕ БРЕНДА]</span>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Производственная фабрика премиальных кухонь под ключ по индивидуальным проектам. Собственные станки, австрийские комплектующие, официальный договор.
+          </p>
+          <div class="text-[11px] text-gray-400">
+            ОГРН: [0000000000000] • ИНН: [0000000000]
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Навигация</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#catalog" class="hover:text-brand-champagne transition-colors">Каталог проектов</a></li>
+            <li><a href="#calculator" class="hover:text-brand-champagne transition-colors">Калькулятор стоимости</a></li>
+            <li><a href="#advantages" class="hover:text-brand-champagne transition-colors">Стандарты качества</a></li>
+            <li><a href="#steps" class="hover:text-brand-champagne transition-colors">Этапы производства</a></li>
+            <li><a href="#reviews" class="hover:text-brand-champagne transition-colors">Отзывы заказчиков</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Materials & Styles -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Материалы и стили</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#catalog" class="hover:text-brand-champagne transition-colors">Кухни из массива дуба</a></li>
+            <li><a href="#catalog" class="hover:text-brand-champagne transition-colors">Фасады в матовой эмали Milesi</a></li>
+            <li><a href="#catalog" class="hover:text-brand-champagne transition-colors">Столешницы из кварцевого агломерата</a></li>
+            <li><a href="#catalog" class="hover:text-brand-champagne transition-colors">Островные кухни для загородных домов</a></li>
+            <li><a href="#catalog" class="hover:text-brand-champagne transition-colors">Фурнитура Blum Legrabox</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contacts & Hours -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Контакты</h4>
+          <div class="text-xs">
+            <span class="text-gray-400 block">Отдел заботы о клиентах:</span>
+            <a href="tel:+78000000000" class="text-white font-bold hover:text-brand-champagne transition-colors">+7 (800) 000-00-00</a>
+          </div>
+          <div class="text-xs">
+            <span class="text-gray-400 block">Почта для эскизов и ТЗ:</span>
+            <a href="mailto:info@placeholder.ru" class="text-white hover:text-brand-champagne transition-colors">info@[БРЕНД].ru</a>
+          </div>
+          <div class="pt-2">
+            <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-emerald-300">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              Чат с главным инженером
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom legal bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        <div>
+          © 2026 [НАЗВАНИЕ БРЕНДА]. Все права защищены. Демонстрационный коммерческий макет.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gray-400 transition-colors">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-gray-400 transition-colors">Пользовательское соглашение</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ========================================================= -->
+  <!-- 10. ПЛАВАЮЩАЯ КНОПКА WHATSAPP (ПУЛЬСИРУЮЩАЯ)             -->
+  <!-- ========================================================= -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center group">
+    <!-- Tooltip -->
+    <div class="hidden sm:block mr-3 px-3.5 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-xs font-semibold text-white shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+      Онлайн-расчет за 2 минуты в WhatsApp
+    </div>
+
+    <!-- Floating Icon Button -->
+    <a 
+      href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BA%D1%83%D1%85%D0%BD%D0%B8" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center wa-glow shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300"
+      aria-label="Написать в WhatsApp"
+    >
+      <i data-lucide="message-circle" class="w-7 h-7 fill-white text-emerald-500"></i>
+    </a>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- 11. МОДАЛЬНОЕ ОКНО ЗАЯВКИ / ЗАМЕРА / 3D-ПРОЕКТА         -->
+  <!-- ========================================================= -->
+  <div id="lead-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity">
+    <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 border border-white/15 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors" aria-label="Закрыть">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/10 text-brand-champagne text-xs font-semibold uppercase mb-2">
+          <i data-lucide="gift" class="w-3.5 h-3.5"></i>
+          3D-проект и замер бесплатно
+        </div>
+        <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white">Вызов замерщика-дизайнера</h3>
+        <p id="modal-desc" class="text-xs sm:text-sm text-gray-400 mt-1">
+          Мастер приедет с каталогами материалов и лазерным дальномером в удобный для вас день.
+        </p>
+      </div>
+
+      <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-gray-400 mb-1">Ваше имя</label>
+          <input 
+            type="text" 
+            required 
+            placeholder="Иван" 
+            class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold text-sm"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-400 mb-1">Номер телефона</label>
+          <input 
+            type="tel" 
+            required 
+            placeholder="+7 (999) 000-00-00" 
+            class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold text-sm"
+          />
+        </div>
+
+        <!-- Hidden input storing calculation details -->
+        <input type="hidden" id="modal-calc-details" value="">
+
+        <div class="p-3 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 flex items-center gap-3">
+          <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+          <span>Фиксация скидки 15% и подарка по текущей акции</span>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-4 rounded-xl text-sm font-bold text-black bg-gradient-to-r from-brand-gold via-brand-champagne to-amber-200 hover:brightness-110 shadow-lg shadow-amber-500/20 transition-all"
+        >
+          Подтвердить и зафиксировать условия
+        </button>
+
+        <p class="text-[10px] text-gray-400 text-center">
+          Мы свяжемся с вами в течение 10 минут. Никакого спама.
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- 12. МОДАЛЬНОЕ ОКНО ПРОСМОТРА ПРОЕКТА КАТАЛОГА            -->
+  <!-- ========================================================= -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="glass-card max-w-3xl w-full rounded-2xl overflow-hidden border border-white/15 shadow-2xl relative max-h-[90vh] flex flex-col">
+      
+      <!-- Close Button -->
+      <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/60 text-white hover:bg-black transition-colors" aria-label="Закрыть">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Image -->
+      <div class="relative h-64 sm:h-80 shrink-0 overflow-hidden">
+        <img id="proj-modal-img" src="" alt="Детали проекта кухни" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#141820] via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-6">
+          <h3 id="proj-modal-title" class="text-2xl sm:text-3xl font-extrabold text-white">Название проекта</h3>
+          <div id="proj-modal-price" class="text-brand-gold font-bold text-lg mt-0.5">от 0 ₽</div>
+        </div>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+        <p id="proj-modal-desc" class="text-sm text-gray-300 leading-relaxed"></p>
+
+        <!-- Specs Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs bg-black/30 p-4 rounded-xl border border-white/5">
+          <div><span class="text-gray-400">Габариты:</span> <span id="proj-modal-size" class="text-white font-semibold ml-1"></span></div>
+          <div><span class="text-gray-400">Фасады:</span> <span id="proj-modal-facade" class="text-white font-semibold ml-1"></span></div>
+          <div><span class="text-gray-400">Столешница:</span> <span id="proj-modal-countertop" class="text-white font-semibold ml-1"></span></div>
+          <div><span class="text-gray-400">Фурнитура:</span> <span id="proj-modal-hardware" class="text-white font-semibold ml-1"></span></div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+          <button id="proj-modal-cta" onclick="" class="w-full sm:flex-1 py-3.5 rounded-xl text-sm font-bold text-black bg-gradient-to-r from-brand-gold to-brand-champagne hover:brightness-110 transition-all text-center">
+            Рассчитать этот проект под мои размеры
+          </button>
+          <a id="proj-modal-wa" href="#" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl text-sm font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            Обсудить в WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT: CALCULATOR LOGIC, TABS, MODALS, ANIMATIONS     -->
+  <!-- ========================================================= -->
+  <script>
+    // Lucide Icons Initialization
+    lucide.createIcons();
+
+    // -------------------------------------------------------------
+    // CALCULATOR STATE & ENGINE
+    // -------------------------------------------------------------
+    let calcState = {
+      shapeMultiplier: 1.0,
+      shapeName: 'Прямая',
+      length: 3.0,
+      facadeBasePrice: 45000,
+      facadeName: 'ЛДСП EGGER (Австрия)',
+      countertopPricePerMeter: 18000,
+      countertopName: 'HPL пластик 38 мм',
+      addonsTotal: 53000 // default checked Blum + LED
+    };
+
+    function selectShape(shapeType, multiplier, btnElement) {
+      calcState.shapeMultiplier = multiplier;
+      
+      const names = {
+        straight: 'Прямая',
+        corner: 'Угловая (Г-обр.)',
+        ushape: 'П-образная',
+        island: 'С островом'
+      };
+      calcState.shapeName = names[shapeType] || 'Прямая';
+
+      // Update button styling
+      document.querySelectorAll('.shape-btn').forEach(btn => {
+        btn.classList.remove('border-brand-gold', 'bg-brand-gold/10');
+        btn.classList.add('border-white/10', 'bg-white/5');
+      });
+      btnElement.classList.remove('border-white/10', 'bg-white/5');
+      btnElement.classList.add('border-brand-gold', 'bg-brand-gold/10');
+
+      document.getElementById('summary-shape').textContent = calcState.shapeName;
+      calculateTotal();
+    }
+
+    function updateLength(val) {
+      calcState.length = parseFloat(val);
+      document.getElementById('length-display').textContent = calcState.length.toFixed(1);
+      document.getElementById('summary-length').textContent = `${calcState.length.toFixed(1)} м.п.`;
+      calculateTotal();
+    }
+
+    function updateFacade(radioElement) {
+      calcState.facadeBasePrice = parseFloat(radioElement.value);
+      calcState.facadeName = radioElement.getAttribute('data-name');
+      document.getElementById('summary-facade').textContent = calcState.facadeName;
+      calculateTotal();
+    }
+
+    function updateCountertop(radioElement) {
+      calcState.countertopPricePerMeter = parseFloat(radioElement.value);
+      calcState.countertopName = radioElement.getAttribute('data-name');
+      document.getElementById('summary-countertop').textContent = calcState.countertopName;
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      // Add-ons checkboxes
+      let addons = 0;
+      if (document.getElementById('opt-blum').checked) addons += parseFloat(document.getElementById('opt-blum').value);
+      if (document.getElementById('opt-led').checked) addons += parseFloat(document.getElementById('opt-led').value);
+      if (document.getElementById('opt-tech').checked) addons += parseFloat(document.getElementById('opt-tech').value);
+      calcState.addonsTotal = addons;
+
+      // Base formula: (Facade price * meters * shapeMultiplier) + (Countertop price * meters) + addons
+      const rawPrice = (calcState.facadeBasePrice * calcState.length * calcState.shapeMultiplier) + 
+                       (calcState.countertopPricePerMeter * calcState.length) + 
+                       calcState.addonsTotal;
+
+      // Round to nearest 1,000
+      const roundedPrice = Math.round(rawPrice / 1000) * 1000;
+      calcState.totalPriceFormatted = roundedPrice.toLocaleString('ru-RU');
+
+      // Update DOM with smooth transition
+      const totalEl = document.getElementById('total-price');
+      totalEl.textContent = calcState.totalPriceFormatted;
+    }
+
+    // WhatsApp Dynamic Link Creator from Calculation
+    function sendCalculationToWhatsApp() {
+      const text = `Здравствуйте! Рассчитал предварительную стоимость кухни на сайте:%0A` +
+        `• Форма: ${calcState.shapeName}%0A` +
+        `• Длина: ${calcState.length.toFixed(1)} м.п.%0A` +
+        `• Фасады: ${calcState.facadeName}%0A` +
+        `• Столешница: ${calcState.countertopName}%0A` +
+        `• Примерная цена: от ${calcState.totalPriceFormatted} ₽.%0A%0A` +
+        `Хочу зафиксировать скидку 15% и записаться на бесплатный 3D-проект!`;
+      
+      const waUrl = `https://wa.me/79990000000?text=${text}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function openModalWithCalculation() {
+      const summary = `Кухня ${calcState.shapeName}, ${calcState.length.toFixed(1)} м.п., Фасады: ${calcState.facadeName}, Столешница: ${calcState.countertopName}. Расчет: от ${calcState.totalPriceFormatted} ₽`;
+      document.getElementById('modal-calc-details').value = summary;
+      openModal('Фиксация цены и 3D-проекта');
+    }
+
+    // -------------------------------------------------------------
+    // CATALOG FILTRATION
+    // -------------------------------------------------------------
+    function filterCatalog(category, btnElement) {
+      // Toggle button active styling
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-gold', 'text-black', 'font-bold');
+        btn.classList.add('text-gray-300', 'font-medium');
+      });
+      btnElement.classList.remove('text-gray-300', 'font-medium');
+      btnElement.classList.add('bg-brand-gold', 'text-black', 'font-bold');
+
+      // Filter projects
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Quick Order from Project Card
+    function orderSimilarProject(projectName, price) {
+      document.getElementById('modal-calc-details').value = `Заказ по проекту «${projectName}» (${price})`;
+      openModal(`Заказать проект «${projectName}»`);
+    }
+
+    // -------------------------------------------------------------
+    // PROJECT DETAILS MODAL
+    // -------------------------------------------------------------
+    function openProjectDetails(title, imgUrl, price, size, facade, countertop, hardware, desc) {
+      document.getElementById('proj-modal-title').textContent = `Проект «${title}»`;
+      document.getElementById('proj-modal-price').textContent = price;
+      document.getElementById('proj-modal-img').src = imgUrl;
+      document.getElementById('proj-modal-size').textContent = size;
+      document.getElementById('proj-modal-facade').textContent = facade;
+      document.getElementById('proj-modal-countertop').textContent = countertop;
+      document.getElementById('proj-modal-hardware').textContent = hardware;
+      document.getElementById('proj-modal-desc').textContent = desc;
+
+      const waMsg = encodeURIComponent(`Здравствуйте! Интересует проект кухни «${title}» (${price}). Хочу узнать подробнее и адаптировать под мои размеры.`);
+      document.getElementById('proj-modal-wa').href = `https://wa.me/79990000000?text=${waMsg}`;
+      
+      document.getElementById('proj-modal-cta').onclick = function() {
+        closeProjectModal();
+        orderSimilarProject(title, price);
+      };
+
+      document.getElementById('project-modal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      lucide.createIcons();
+    }
+
+    function closeProjectModal() {
+      document.getElementById('project-modal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // -------------------------------------------------------------
+    // GENERAL MODAL MANAGEMENT
+    // -------------------------------------------------------------
+    function openModal(title = 'Вызов замерщика-дизайнера', desc) {
+      document.getElementById('modal-title').textContent = title;
+      if (desc) {
+        document.getElementById('modal-desc').textContent = desc;
+      }
+      document.getElementById('lead-modal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('lead-modal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Close modal on click outside
+    window.addEventListener('click', function(e) {
+      const leadModal = document.getElementById('lead-modal');
+      const projModal = document.getElementById('project-modal');
+      if (e.target === leadModal) closeModal();
+      if (e.target === projModal) closeProjectModal();
+    });
+
+    // Form Submissions
+    function handleModalSubmit(event) {
+      event.preventDefault();
+      alert('Спасибо за заявку! Ведущий дизайнер свяжется с вами в течение 10 минут для согласования времени и деталей.');
+      closeModal();
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert('Спасибо за обращение! Менеджер фабрики уже обрабатывает вашу заявку.');
+      event.target.reset();
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Initial calculation on load
+    calculateTotal();
+  </script>
+</body>
+</html>

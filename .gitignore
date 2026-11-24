@@ -1,0 +1,4 @@
+# Logs
+*.log
+.system_generated/
+scratch/
