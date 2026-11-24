@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Студия Ремонта [НАЗВАНИЕ] | Капитальный и дизайнерский ремонт квартир под ключ</title>
+  <meta name="description" content="Ремонт квартир под ключ в Москве и МО с фиксированной сметой, поэтапной оплатой и гарантией 3 года по договору. Бесплатный замер и расчет сметы за 24 часа.">
+
+  <!-- Google Fonts: Manrope & Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
+          },
+          colors: {
+            brand: {
+              accent: '#3B82F6', // Electric Modern Blue
+              accentHover: '#2563EB',
+              amber: '#F59E0B',
+              gold: '#EAB308',
+              dark: '#0B0D11',
+              cardDark: '#13161F',
+              surface: '#1A1E29',
+              borderDark: '#222736',
+              concrete: '#94A3B8'
+            }
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 2.5s infinite',
+            'float-slow': 'floatSlow 4s ease-in-out infinite',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+              '50%': { transform: 'scale(1.06)', opacity: '0.85' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0D11;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222736;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3B82F6;
+    }
+
+    /* Glassmorphism */
+    .glass-header {
+      background: rgba(11, 13, 17, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-card {
+      background: rgba(19, 22, 31, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    /* WhatsApp Pulse effect */
+    .wa-glow {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      animation: waPulse 2s infinite;
+    }
+    @keyframes waPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Before / After Slider Styles */
+    .ba-container {
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .ba-after-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ba-before-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .ba-before-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      object-fit: cover;
+      max-width: none;
+    }
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #FFFFFF;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+      z-index: 20;
+      transform: translateX(-50%);
+      cursor: ew-resize;
+    }
+    .ba-handle-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: #3B82F6;
+      border: 3px solid #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      cursor: ew-resize;
+    }
+
+    /* Range slider custom styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: #222736;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #3B82F6;
+      cursor: pointer;
+      border: 3px solid #0B0D11;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.7);
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body class="bg-[#0B0D11] text-gray-200 font-sans selection:bg-brand-accent selection:text-white antialiased overflow-x-hidden">
+
+  <!-- ========================================================= -->
+  <!-- 1. HEADER (ШАПКА)                                         -->
+  <!-- ========================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-header border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-blue-400 p-[1px] flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <div class="w-full h-full bg-[#0B0D11] rounded-xl flex items-center justify-center group-hover:bg-[#13161F] transition-colors">
+            <i data-lucide="hammer" class="w-5 h-5 text-brand-accent"></i>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold tracking-wider text-white uppercase flex items-center gap-1">
+            [СТУДИЯ РЕМОНТА]
+          </span>
+          <span class="text-[10px] tracking-widest text-brand-accent uppercase font-semibold">Капитальный & Дизайнерский</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
+        <a href="#services" class="hover:text-brand-accent transition-colors">Тарифы</a>
+        <a href="#calculator" class="hover:text-brand-accent transition-colors flex items-center gap-1.5">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+          </span>
+          Калькулятор
+        </a>
+        <a href="#before-after" class="hover:text-brand-accent transition-colors">До / После</a>
+        <a href="#portfolio" class="hover:text-brand-accent transition-colors">Портфолио</a>
+        <a href="#workflow" class="hover:text-brand-accent transition-colors">Схема работы</a>
+        <a href="#guarantee" class="hover:text-brand-accent transition-colors">Гарантии</a>
+      </nav>
+
+      <!-- Quick Contacts & WhatsApp -->
+      <div class="hidden lg:flex items-center gap-4">
+        <div class="text-right">
+          <a href="tel:+74950000000" class="text-sm font-bold text-white hover:text-brand-accent transition-colors block">
+            +7 (495) 000-00-00
+          </a>
+          <span class="text-[11px] text-emerald-400 flex items-center justify-end gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Инженер на дежурстве
+          </span>
+        </div>
+
+        <!-- WhatsApp Quick Link -->
+        <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%B0" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 hover:text-emerald-300 transition-all duration-200" title="Написать в WhatsApp">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+        </a>
+
+        <!-- Measurement CTA -->
+        <button onclick="openModal('Бесплатный вызов инженера-сметчика')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-brand-accent hover:bg-brand-accentHover shadow-lg shadow-blue-500/25 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+          Вызвать замерщика
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none" aria-label="Меню">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden glass-header border-b border-white/10 px-6 py-6 transition-all duration-300">
+      <nav class="flex flex-col gap-4 text-base font-medium">
+        <a href="#services" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-accent">Тарифы ремонта</a>
+        <a href="#calculator" onclick="toggleMobileMenu()" class="text-brand-accent font-semibold flex items-center justify-between">
+          Калькулятор сметы
+          <span class="text-xs bg-brand-accent/20 text-brand-accent px-2 py-0.5 rounded-full">Online</span>
+        </a>
+        <a href="#before-after" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-accent">Сравнение До / После</a>
+        <a href="#portfolio" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-accent">Портфолио проектов</a>
+        <a href="#workflow" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-accent">Этапы ремонта</a>
+        <a href="#guarantee" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-brand-accent">Гарантии и договор</a>
+      </nav>
+      <div class="mt-6 pt-6 border-t border-white/10 flex flex-col gap-3">
+        <a href="tel:+74950000000" class="text-lg font-bold text-white text-center">+7 (495) 000-00-00</a>
+        <button onclick="toggleMobileMenu(); openModal('Бесплатный вызов инженера-сметчика')" class="w-full py-3 rounded-xl font-semibold text-white bg-brand-accent text-center">
+          Записаться на лазерный замер
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========================================================= -->
+  <!-- 2. HERO СЕКЦИЯ                                            -->
+  <!-- ========================================================= -->
+  <section class="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center justify-center overflow-hidden">
+    
+    <!-- Background Real Photo with Dark Grading -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85" 
+        alt="Современный готовый ремонт квартиры" 
+        class="w-full h-full object-cover object-center transform scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0B0D11] via-[#0B0D11]/90 to-[#0B0D11]/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D11] via-transparent to-[#0B0D11]/80"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/10 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: USP & Triggers -->
+        <div class="lg:col-span-8 flex flex-col gap-6 text-left">
+          
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md w-fit">
+            <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
+            <span class="text-xs font-semibold text-blue-300 tracking-wide uppercase">Студия комплексной отделки • Москва и МО</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+            Капитальный и дизайнерский <br class="hidden sm:block">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-200">ремонт квартир</span> под ключ
+          </h1>
+
+          <p class="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
+            Фиксированная смета без скрытых доплат. Оплата строго по факту выполненных этапов. Гарантия <span class="text-white font-bold underline decoration-brand-accent decoration-2">3 года по договору</span> и видеоконтроль 24/7 в приложении.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#calculator" class="px-8 py-4 rounded-xl text-base font-bold text-white bg-brand-accent hover:bg-brand-accentHover shadow-xl shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3 group">
+              <i data-lucide="calculator" class="w-5 h-5 text-white transition-transform group-hover:scale-110"></i>
+              <span>Рассчитать смету онлайн</span>
+            </a>
+
+            <button onclick="openModal('Бесплатный вызов инженера на замер')" class="px-8 py-4 rounded-xl text-base font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2.5">
+              <i data-lucide="ruler" class="w-4 h-4 text-brand-accent"></i>
+              <span>Вызвать инженера на замер</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-brand-accent">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">0 ₽ переплат</p>
+                <p class="text-xs text-gray-400">Смета зафиксирована в договоре</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-brand-accent">
+                <i data-lucide="wallet" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">Оплата по этапам</p>
+                <p class="text-xs text-gray-400">Без 100% предоплаты</p>
+              </div>
+            </div>
+
+            <div class="col-span-2 sm:col-span-1 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-brand-accent">
+                <i data-lucide="video" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">Камера 24/7</p>
+                <p class="text-xs text-gray-400">Видеотрансляция со стройки</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Stat Box / Highlights -->
+        <div class="lg:col-span-4 hidden lg:block">
+          <div class="glass-card rounded-2xl p-7 border border-white/10 shadow-2xl relative animate-float-slow">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+              <span class="text-xs uppercase font-extrabold tracking-wider text-brand-accent">Показатели студии</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold">2026 активен</span>
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <div class="text-3xl font-extrabold text-white font-mono">750+</div>
+                <div class="text-xs text-gray-400 mt-0.5">Квартир сдано под ключ без задержек</div>
+              </div>
+              <div class="border-t border-white/5 pt-4">
+                <div class="text-3xl font-extrabold text-white font-mono">до 20%</div>
+                <div class="text-xs text-gray-400 mt-0.5">Экономия на черновых материалах Knauf, Rehau, Schneider</div>
+              </div>
+              <div class="border-t border-white/5 pt-4">
+                <div class="text-3xl font-extrabold text-brand-accent font-mono">3 года</div>
+                <div class="text-xs text-gray-400 mt-0.5">Полная гарантия на все инженерные и чистовые работы</div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-white/10">
+              <button onclick="openModal('Получить консультацию главного инженера')" class="w-full py-3.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all flex items-center justify-center gap-2">
+                <span>Консультация главного инженера</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 3. ИНТЕРАКТИВНЫЙ БЛОК «ДО / ПОСЛЕ» (BEFORE/AFTER SLIDER)  -->
+  <!-- ========================================================= -->
+  <section id="before-after" class="py-24 bg-[#0F1218] border-t border-b border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="split" class="w-3.5 h-3.5"></i>
+          Интерактивное сравнение
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          От голого бетона до <span class="text-brand-accent">дизайнерского уюта</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Потяните ползунок в центре, чтобы сравнить черновую стадию и финальный результат ремонта.
+        </p>
+      </div>
+
+      <!-- Before/After Split Widget -->
+      <div class="max-w-4xl mx-auto">
+        <div class="ba-container rounded-2xl border border-white/15 shadow-2xl h-[360px] sm:h-[500px]" id="ba-slider">
+          
+          <!-- After (Full Image) -->
+          <img 
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85" 
+            alt="После ремонта: готовая дизайнерская гостиная" 
+            class="ba-after-img"
+          />
+          <div class="absolute bottom-6 right-6 z-10 px-4 py-2 rounded-xl bg-black/70 backdrop-blur-md border border-white/10 text-xs font-bold text-white flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            ПОСЛЕ: Чистовая сдача
+          </div>
+
+          <!-- Before (Clipped Image) -->
+          <div class="ba-before-wrapper" id="ba-before">
+            <img 
+              src="https://images.unsplash.com/photo-1541888946425-d0fbb18f15f7?auto=format&fit=crop&w=1600&q=80" 
+              alt="До ремонта: черновой бетон и монтаж коммуникаций" 
+              class="ba-before-img" 
+              id="ba-before-img"
+            />
+            <div class="absolute bottom-6 left-6 z-10 px-4 py-2 rounded-xl bg-black/70 backdrop-blur-md border border-white/10 text-xs font-bold text-gray-300 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              ДО: Бетон от застройщика
+            </div>
+          </div>
+
+          <!-- Divider Handle -->
+          <div class="ba-handle" id="ba-handle">
+            <div class="ba-handle-button">
+              <i data-lucide="chevrons-left-right" class="w-5 h-5 text-white"></i>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-4 flex items-center justify-between text-xs text-gray-400 px-2">
+          <span>← Перемещайте ползунок влево/вправо</span>
+          <span>Объект: ЖК «Символ», 74 м²</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 4. ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР РАСЧЕТА РЕМОНТА            -->
+  <!-- ========================================================= -->
+  <section id="calculator" class="py-24 bg-[#0B0D11] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-brand-accent text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+          Точный онлайн-расчет
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Калькулятор стоимости <span class="text-brand-accent">ремонта под ключ</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Рассчитайте бюджет работ и черновых материалов за 1 минуту. Получите персональный подарок при отправке сметы.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Calculator Steps (8 Cols) -->
+        <div class="lg:col-span-8 flex flex-col gap-6">
+          
+          <!-- STEP 1: Object Type -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-blue-500/20 text-brand-accent flex items-center justify-center text-xs">1</span>
+                Тип объекта
+              </span>
+              <span class="text-xs text-gray-400">Влияет на объем демонтажа</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button type="button" onclick="selectObjectType('newbuild', 1.0, this)" class="obj-btn p-4 rounded-xl border border-brand-accent bg-blue-500/10 text-left transition-all">
+                <div class="w-8 h-8 rounded-lg bg-black/40 flex items-center justify-center text-brand-accent mb-2">
+                  <i data-lucide="building" class="w-4 h-4"></i>
+                </div>
+                <div class="font-bold text-sm text-white">Новостройка</div>
+                <div class="text-xs text-gray-400 mt-1">Голый бетон или whitebox</div>
+              </button>
+
+              <button type="button" onclick="selectObjectType('secondary', 1.25, this)" class="obj-btn p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-accent/50 text-left transition-all">
+                <div class="w-8 h-8 rounded-lg bg-black/40 flex items-center justify-center text-gray-300 mb-2">
+                  <i data-lucide="home" class="w-4 h-4"></i>
+                </div>
+                <div class="font-bold text-sm text-white">Вторичное жилье</div>
+                <div class="text-xs text-gray-400 mt-1">Требуется демонтаж и замена</div>
+              </button>
+
+              <button type="button" onclick="selectObjectType('cottage', 1.35, this)" class="obj-btn p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-accent/50 text-left transition-all">
+                <div class="w-8 h-8 rounded-lg bg-black/40 flex items-center justify-center text-gray-300 mb-2">
+                  <i data-lucide="trees" class="w-4 h-4"></i>
+                </div>
+                <div class="font-bold text-sm text-white">Коттедж / Дом</div>
+                <div class="text-xs text-gray-400 mt-1">Сложная инженерия и котельная</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Renovation Package -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-blue-500/20 text-brand-accent flex items-center justify-center text-xs">2</span>
+                Класс ремонта
+              </span>
+              <span class="text-xs text-gray-400">Уровень сложности и материалов</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button type="button" onclick="selectRenovationClass('capital', 14500, 45, this)" class="class-btn p-4 rounded-xl border border-brand-accent bg-blue-500/10 text-left transition-all">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-bold text-sm text-white">Капитальный</span>
+                  <span class="text-xs text-brand-accent font-mono font-bold">14 500 ₽/м²</span>
+                </div>
+                <div class="text-xs text-gray-400">Выравнивание стен, стяжка, новая электрика, обои, ламинат.</div>
+              </button>
+
+              <button type="button" onclick="selectRenovationClass('comfort', 19800, 60, this)" class="class-btn p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-accent/50 text-left transition-all">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-bold text-sm text-white">Комфорт +</span>
+                  <span class="text-xs text-brand-accent font-mono font-bold">19 800 ₽/м²</span>
+                </div>
+                <div class="text-xs text-gray-400">Шумоизоляция, скрытые двери, керамогранит, теневой плинтус.</div>
+              </button>
+
+              <button type="button" onclick="selectRenovationClass('designer', 28500, 85, this)" class="class-btn p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-accent/50 text-left transition-all">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-bold text-sm text-white">Дизайнерский</span>
+                  <span class="text-xs text-brand-accent font-mono font-bold">28 500 ₽/м²</span>
+                </div>
+                <div class="text-xs text-gray-400">3D-проект, трековое освещение, умный дом, заказные стеновые панели.</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Apartment Area Slider -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-blue-500/20 text-brand-accent flex items-center justify-center text-xs">3</span>
+                Площадь квартиры
+              </span>
+              <div class="text-right">
+                <span id="area-display" class="text-2xl font-extrabold text-white font-mono">65</span>
+                <span class="text-sm font-semibold text-brand-accent">м²</span>
+              </div>
+            </div>
+
+            <div class="py-3">
+              <input 
+                id="area-slider" 
+                type="range" 
+                min="25" 
+                max="200" 
+                step="1" 
+                value="65" 
+                oninput="updateArea(this.value)" 
+                class="w-full cursor-pointer"
+              />
+              <div class="flex justify-between text-xs text-gray-400 mt-2 font-medium">
+                <span>25 м² (Студия)</span>
+                <span>65 м² (2-комнатная)</span>
+                <span>100 м² (3-комнатная)</span>
+                <span>200+ м² (Пентхаус)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Bathrooms & Rough Materials Options -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Bathrooms -->
+            <div class="glass-card rounded-2xl p-6">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                <span class="w-5 h-5 rounded-full bg-blue-500/20 text-brand-accent flex items-center justify-center text-xs">4</span>
+                Санузлы
+              </span>
+              <div class="space-y-2">
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="bathrooms" value="0" checked onchange="updateBathrooms(0, '1 совмещенный')" class="text-brand-accent focus:ring-brand-accent">
+                    <span class="text-xs font-medium text-white">1 совмещенный</span>
+                  </div>
+                  <span class="text-[11px] text-gray-400">Базовый</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="bathrooms" value="45000" onchange="updateBathrooms(45000, '1 раздельный')" class="text-brand-accent focus:ring-brand-accent">
+                    <span class="text-xs font-medium text-white">1 раздельный</span>
+                  </div>
+                  <span class="text-[11px] text-gray-400">+45 000 ₽</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="bathrooms" value="95000" onchange="updateBathrooms(95000, '2 санузла')" class="text-brand-accent focus:ring-brand-accent">
+                    <span class="text-xs font-medium text-white">2 и более санузла</span>
+                  </div>
+                  <span class="text-[11px] text-gray-400">+95 000 ₽</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Rough Materials Selection -->
+            <div class="glass-card rounded-2xl p-6">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                <span class="w-5 h-5 rounded-full bg-blue-500/20 text-brand-accent flex items-center justify-center text-xs">5</span>
+                Черновые материалы
+              </span>
+              <div class="space-y-2">
+                <label class="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-brand-accent/40 cursor-pointer">
+                  <input type="radio" name="materials" value="included" checked onchange="updateMaterials(true)" class="mt-0.5 text-brand-accent focus:ring-brand-accent">
+                  <div>
+                    <div class="text-xs font-bold text-white">Включить под ключ (-20%)</div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">Knauf, Rehau, Schneider по оптовой цене с доставкой и подъемом</div>
+                  </div>
+                </label>
+                <label class="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+                  <input type="radio" name="materials" value="excluded" onchange="updateMaterials(false)" class="mt-0.5 text-brand-accent focus:ring-brand-accent">
+                  <div>
+                    <div class="text-xs font-bold text-white">Только работы</div>
+                    <div class="text-[11px] text-gray-400 mt-0.5">Материалы закупаете самостоятельно по нашему техлисту</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- STEP 6: Choose a Gift -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-500/30 bg-amber-500/5">
+            <div class="flex items-center gap-2 mb-3 text-amber-400 font-bold text-xs uppercase tracking-wider">
+              <i data-lucide="gift" class="w-4 h-4"></i>
+              Выберите подарок к вашему договору ремонта:
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <label class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/10 cursor-pointer text-xs">
+                <input type="radio" name="gift" value="3D-дизайн проект" checked class="text-amber-400 focus:ring-amber-400">
+                <span class="text-white">Полный 3D-дизайн проект</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/10 cursor-pointer text-xs">
+                <input type="radio" name="gift" value="Страховка на 5 000 000 ₽" class="text-amber-400 focus:ring-amber-400">
+                <span class="text-white">Страховка на 5 млн ₽</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/10 cursor-pointer text-xs">
+                <input type="radio" name="gift" value="Скидка 10% на плитку и полы" class="text-amber-400 focus:ring-amber-400">
+                <span class="text-white">Скидка 10% на чистовые</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sticky Results Summary (4 Cols) -->
+        <div class="lg:col-span-4 sticky top-28">
+          <div class="glass-card rounded-2xl p-6 sm:p-7 border border-blue-500/40 shadow-2xl relative overflow-hidden">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-white/10">
+              <span class="text-xs uppercase font-extrabold tracking-wider text-gray-400">Предварительная смета</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 font-semibold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                Расчет онлайн
+              </span>
+            </div>
+
+            <!-- Total Price & Timeline -->
+            <div class="py-5 text-center">
+              <div class="text-xs text-gray-400 uppercase tracking-widest font-medium">Ориентировочная стоимость:</div>
+              <div class="mt-1 text-3xl sm:text-4xl font-extrabold text-white tracking-tight flex items-center justify-center gap-1 font-mono">
+                <span class="text-gray-400 text-2xl font-normal">от</span>
+                <span id="calc-total-price" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">942 500</span>
+                <span class="text-brand-accent font-normal text-2xl font-sans">₽</span>
+              </div>
+              
+              <!-- Timeline badge -->
+              <div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-accent"></i>
+                <span>Срок работ: ~<strong id="calc-timeline" class="text-white">60-70 дней</strong></span>
+              </div>
+            </div>
+
+            <!-- Parameters Summary Breakdown -->
+            <div class="bg-black/40 rounded-xl p-4 space-y-2 text-xs border border-white/5 mb-6">
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Объект:</span>
+                <span id="sum-obj" class="font-semibold text-white">Новостройка</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Класс:</span>
+                <span id="sum-class" class="font-semibold text-white">Капитальный</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Площадь:</span>
+                <span id="sum-area" class="font-semibold text-white">65 м²</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Санузлы:</span>
+                <span id="sum-bath" class="font-semibold text-white">1 совмещенный</span>
+              </div>
+              <div class="flex justify-between text-gray-300">
+                <span class="text-gray-400">Черновые материалы:</span>
+                <span id="sum-mat" class="font-semibold text-emerald-400">Под ключ (-20%)</span>
+              </div>
+            </div>
+
+            <!-- WhatsApp Send CTA -->
+            <div class="space-y-3">
+              <button 
+                onclick="sendRenovationToWhatsApp()" 
+                class="w-full py-4 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 group"
+              >
+                <i data-lucide="message-circle" class="w-5 h-5 text-white"></i>
+                <span>Получить расчет сметы в WhatsApp</span>
+              </button>
+
+              <button 
+                onclick="openModalWithRenovationCalc()" 
+                class="w-full py-3.5 rounded-xl text-xs font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors flex items-center justify-center gap-2"
+              >
+                <i data-lucide="file-check" class="w-4 h-4 text-brand-accent"></i>
+                <span>Зафиксировать смету и подарок</span>
+              </button>
+            </div>
+
+            <div class="mt-4 flex items-center justify-center gap-2 text-[11px] text-gray-400 text-center">
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-accent"></i>
+              <span>Смета фиксируется в договоре и не увеличивается в процессе.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 5. ТАРИФЫ И ПАКЕТЫ УСЛУГ                                 -->
+  <!-- ========================================================= -->
+  <section id="services" class="py-24 bg-[#0F1218] border-t border-b border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-brand-accent text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          Прозрачные тарифы
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Пакетные решения <span class="text-brand-accent">под любой бюджет</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Все тарифы включают технический надзор, снабжение материалами и финальный клининг.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Tariff 1: Capital -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border border-white/10 hover:border-blue-500/40 transition-all">
+          <div>
+            <div class="text-xs uppercase font-extrabold tracking-wider text-gray-400 mb-2">Базовый стандарт</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Капитальный</h3>
+            <p class="text-xs text-gray-400 mb-6">Оптимально для сдачи в аренду или комфортного первичного заселения в новостройку.</p>
+            
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">
+              от 14 500 <span class="text-sm font-sans text-brand-accent font-normal">₽ / м²</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-gray-300 border-t border-white/5 pt-5 mb-8">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Выравнивание стен по лазерным маякам</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Полусухая стяжка пола с демпфером</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Электромонтаж по ГОСТ с щитом ABB</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Разводка труб водоснабжения с опрессовкой</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Укладка ламината и керамической плитки</li>
+            </ul>
+          </div>
+
+          <button onclick="openModal('Заказ тарифа «Капитальный»')" class="w-full py-3.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all text-center">
+            Выбрать тариф «Капитальный»
+          </button>
+        </div>
+
+        <!-- Tariff 2: Comfort + (Most Popular) -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-2 border-brand-accent shadow-2xl relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-brand-accent text-white text-[10px] font-extrabold uppercase tracking-wider">
+            Хит выбор клиентов
+          </div>
+
+          <div>
+            <div class="text-xs uppercase font-extrabold tracking-wider text-blue-400 mb-2">Повышенный комфорт</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Комфорт +</h3>
+            <p class="text-xs text-gray-300 mb-6">Идеально для постоянного проживания семьи: тишина, надежная сантехника и современные материалы.</p>
+            
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">
+              от 19 800 <span class="text-sm font-sans text-brand-accent font-normal">₽ / м²</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-gray-200 border-t border-white/10 pt-5 mb-8">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Всё, что входит в «Капитальный»</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Шумоизоляция перекрытий и стен спальни</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Коллекторный узел Rehau Rautitan + FAR</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Скрытые двери Invisible в единой плоскости</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Широкоформатный керамогранит с запилом 45°</li>
+            </ul>
+          </div>
+
+          <button onclick="openModal('Заказ тарифа «Комфорт +»')" class="w-full py-3.5 rounded-xl text-xs font-bold text-white bg-brand-accent hover:bg-brand-accentHover transition-all text-center shadow-lg shadow-blue-500/25">
+            Выбрать тариф «Комфорт +»
+          </button>
+        </div>
+
+        <!-- Tariff 3: Designer -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border border-white/10 hover:border-blue-500/40 transition-all">
+          <div>
+            <div class="text-xs uppercase font-extrabold tracking-wider text-amber-400 mb-2">Индивидуальный проект</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Дизайнерский</h3>
+            <p class="text-xs text-gray-400 mb-6">Безупречная реализация авторского проекта любой сложности с надзором архитектора.</p>
+            
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">
+              от 28 500 <span class="text-sm font-sans text-amber-400 font-normal">₽ / м²</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-gray-300 border-t border-white/5 pt-5 mb-8">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0"></i>Полный 3D дизайн-проект с комплектацией</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0"></i>Авторский надзор архитектора на всех стадиях</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0"></i>Парящие теневые потолки и магнитные треки</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0"></i>Интеграция датчиков протечки и умного дома</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0"></i>Стеновые рейки, молдинги и декоративная штукатурка</li>
+            </ul>
+          </div>
+
+          <button onclick="openModal('Заказ тарифа «Дизайнерский»')" class="w-full py-3.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all text-center">
+            Выбрать тариф «Дизайнерский»
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 6. ПОРТФОЛИО СДАННЫХ ОБЪЕКТОВ                             -->
+  <!-- ========================================================= -->
+  <section id="portfolio" class="py-24 bg-[#0B0D11] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-brand-accent text-xs uppercase tracking-wider font-semibold mb-3">
+            <i data-lucide="folder-check" class="w-3.5 h-3.5"></i>
+            Реальные объекты
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            Сданные квартиры в Москве и МО
+          </h2>
+          <p class="mt-3 text-gray-400 text-base max-w-xl">
+            Посмотрите качество стыков, укладки керамогранита и освещения в готовых проектах.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+          <button onclick="filterPortfolio('all', this)" class="p-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-brand-accent text-white transition-all">Все</button>
+          <button onclick="filterPortfolio('studio', this)" class="p-filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">Студии / 1-комн.</button>
+          <button onclick="filterPortfolio('2room', this)" class="p-filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">2-комнатные</button>
+          <button onclick="filterPortfolio('3room', this)" class="p-filter-btn px-4 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-all">Евротрешки / Дома</button>
+        </div>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+        
+        <!-- Case 1: ЖК Символ -->
+        <div class="p-card glass-card rounded-2xl overflow-hidden group" data-cat="3room">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" 
+              alt="Ремонт евротрешки в ЖК Символ" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-white border border-white/10">
+              Евротрешка • 78 м²
+            </span>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
+              Сдан за 65 дней
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white">ЖК «Символ»</h3>
+              <div class="text-brand-accent font-mono font-bold text-lg">1 420 000 ₽</div>
+            </div>
+            <p class="text-xs text-gray-400 mb-4">
+              Тариф «Комфорт +». Теневые плинтусы, скрытый трековый свет, керамогранит под оникс с подогревом полов.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-4">
+              <div><span class="text-gray-400">Стиль:</span> Минимализм</div>
+              <div><span class="text-gray-400">Санузел:</span> 2 шт (раздельные)</div>
+              <div><span class="text-gray-400">Сантехника:</span> Rehau Rautitan</div>
+              <div><span class="text-gray-400">Смета:</span> Без удорожаний</div>
+            </div>
+
+            <button onclick="openModal('Хочу такой же ремонт как в ЖК Символ')" class="w-full py-2.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-brand-accent transition-colors text-center">
+              Рассчитать похожий проект
+            </button>
+          </div>
+        </div>
+
+        <!-- Case 2: ЖК Сердце Столицы -->
+        <div class="p-card glass-card rounded-2xl overflow-hidden group" data-cat="2room">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" 
+              alt="Ремонт квартиры в ЖК Сердце Столицы" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-white border border-white/10">
+              2-комнатная • 64 м²
+            </span>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
+              Сдан за 52 дня
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white">ЖК «Сердце Столицы»</h3>
+              <div class="text-brand-accent font-mono font-bold text-lg">1 240 000 ₽</div>
+            </div>
+            <p class="text-xs text-gray-400 mb-4">
+              Неоклассика с молдингами на стенах, покраска Flugger, паркетная доска елочкой и стеклянные перегородки.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-4">
+              <div><span class="text-gray-400">Стиль:</span> Неоклассика</div>
+              <div><span class="text-gray-400">Шумоизоляция:</span> Полная (SoundGuard)</div>
+              <div><span class="text-gray-400">Двери:</span> Invisible под покраску</div>
+              <div><span class="text-gray-400">Смета:</span> Строго по договору</div>
+            </div>
+
+            <button onclick="openModal('Хочу такой же ремонт как в Сердце Столицы')" class="w-full py-2.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-brand-accent transition-colors text-center">
+              Рассчитать похожий проект
+            </button>
+          </div>
+        </div>
+
+        <!-- Case 3: ЖК Зиларт -->
+        <div class="p-card glass-card rounded-2xl overflow-hidden group" data-cat="studio">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1502005229762-ee1b2da97ba4?auto=format&fit=crop&w=800&q=80" 
+              alt="Студия лофт в ЖК Зиларт" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-white border border-white/10">
+              Студия • 38 м²
+            </span>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
+              Сдан за 38 дней
+            </span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white">ЖК «Зиларт»</h3>
+              <div class="text-brand-accent font-mono font-bold text-lg">760 000 ₽</div>
+            </div>
+            <p class="text-xs text-gray-400 mb-4">
+              Студия в стиле софт-лофт. Открытая фактурная кирпичная кладка, зонирование стеклом и реечные акценты.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 py-3 border-t border-b border-white/5 mb-4">
+              <div><span class="text-gray-400">Стиль:</span> Софт-лофт</div>
+              <div><span class="text-gray-400">Зонирование:</span> Лофт-перегородка</div>
+              <div><span class="text-gray-400">Электрика:</span> Schneider AtlasDesign</div>
+              <div><span class="text-gray-400">Смета:</span> Фиксированная</div>
+            </div>
+
+            <button onclick="openModal('Хочу такой же ремонт как в ЖК Зиларт')" class="w-full py-2.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-brand-accent transition-colors text-center">
+              Рассчитать похожий проект
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 7. ЭТАПЫ РАБОТЫ (TIMELINE)                                -->
+  <!-- ========================================================= -->
+  <section id="workflow" class="py-24 bg-[#0F1218] border-t border-b border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-brand-accent text-xs uppercase tracking-wider font-semibold mb-3">
+          <i data-lucide="git-commit" class="w-3.5 h-3.5"></i>
+          Прозрачный процесс
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Ремонт без нервов за <span class="text-brand-accent">5 простых шагов</span>
+        </h2>
+        <p class="mt-4 text-gray-400 text-base sm:text-lg">
+          Вы принимаете этапы в личном кабинете или на объекте, оплачивая работы только после проверки.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-accent font-mono font-bold text-lg flex items-center justify-center mb-4">
+              01
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Замер и точная смета</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Инженер проводит лазерное сканирование помещений, проверяет перепады стен и составляет детальную смету за 24 ч.
+            </p>
+          </div>
+          <span class="mt-4 text-[11px] font-semibold text-brand-accent">Бесплатно</span>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-accent font-mono font-bold text-lg flex items-center justify-center mb-4">
+              02
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Договор и сроки</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Фиксируем конечную стоимость в рублях и точные даты сдачи. Прописываем штрафные санкции за задержку.
+            </p>
+          </div>
+          <span class="mt-4 text-[11px] font-semibold text-emerald-400">Фиксация 100%</span>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-accent font-mono font-bold text-lg flex items-center justify-center mb-4">
+              03
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Черновые работы</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Возведение перегородок, штукатурка под 90°, стяжка, полная разводка электрики и коллекторной сантехники Rehau.
+            </p>
+          </div>
+          <span class="mt-4 text-[11px] font-semibold text-brand-accent">Камера 24/7</span>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-accent font-mono font-bold text-lg flex items-center justify-center mb-4">
+              04
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Чистовая отделка</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Керамогранит, покраска без шагрени, кварцвинил/паркет, установка дверей Invisible, чистовой сантехники и света.
+            </p>
+          </div>
+          <span class="mt-4 text-[11px] font-semibold text-brand-accent">Контроль технадзора</span>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-accent font-mono font-bold text-lg flex items-center justify-center mb-4">
+              05
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Клининг и гарантия</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Профессиональная уборка пылесосами Karcher, вывоз мусора. Вы подписываете акт и получаете гарантию 3 года.
+            </p>
+          </div>
+          <span class="mt-4 text-[11px] font-semibold text-emerald-400">Гарантия 3 года</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 8. ГАРАНТИИ И БЕЗОПАСНОСТЬ                              -->
+  <!-- ========================================================= -->
+  <section id="guarantee" class="py-24 bg-[#0B0D11] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-white/10 relative overflow-hidden">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-8 space-y-4">
+            <span class="text-xs font-bold text-brand-accent uppercase tracking-widest flex items-center gap-2">
+              <i data-lucide="shield-alert" class="w-4 h-4"></i>
+              Юридическая защита заказчика
+            </span>
+            <h3 class="text-2xl sm:text-4xl font-extrabold text-white">
+              Почему с нами безопасно: 4 пункта договора
+            </h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Мы устранили все риски классического ремонта: от недобросовестных частных бригад до внезапных сметных накруток.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-4 pt-4">
+              <div class="p-4 rounded-xl bg-black/40 border border-white/5">
+                <div class="font-bold text-sm text-white mb-1">1. Неизменная смета</div>
+                <div class="text-xs text-gray-400">Стоимость зафиксирована в приложении к договору. Никаких «дополнительных расходов» в процессе.</div>
+              </div>
+              <div class="p-4 rounded-xl bg-black/40 border border-white/5">
+                <div class="font-bold text-sm text-white mb-1">2. Оплата по факту</div>
+                <div class="text-xs text-gray-400">Ремонт разбит на 4-5 этапов. Вы платите только после личной проверки каждого этапа.</div>
+              </div>
+              <div class="p-4 rounded-xl bg-black/40 border border-white/5">
+                <div class="font-bold text-sm text-white mb-1">3. Штраф за срыв сроков</div>
+                <div class="text-xs text-gray-400">За каждый день задержки мы выплачиваем компенсацию по закону РФ о защите прав потребителей.</div>
+              </div>
+              <div class="p-4 rounded-xl bg-black/40 border border-white/5">
+                <div class="font-bold text-sm text-white mb-1">4. Страховка на 5 000 000 ₽</div>
+                <div class="text-xs text-gray-400">Ответственность перед соседями и объектом застрахована на весь период проведения работ.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col items-center justify-center text-center p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20">
+            <div class="w-16 h-16 rounded-2xl bg-brand-accent text-white flex items-center justify-center mb-4 shadow-lg shadow-blue-500/30">
+              <i data-lucide="file-text" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-1">Скачать образец договора</h4>
+            <p class="text-xs text-gray-400 mb-4">Официальный типовой договор со всеми приложениями и сметой (PDF, 2.4 МБ)</p>
+            <button onclick="alert('Образец типового договора будет скачан. В реальном проекте здесь прямая ссылка на PDF.')" class="w-full py-3 rounded-xl text-xs font-bold text-white bg-brand-accent hover:bg-brand-accentHover transition-colors">
+              Скачать договор (PDF)
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 9. КОНТАКТЫ & ФОРМА ВЫЗОВА ИНЖЕНЕРА-СМЕТЧИКА              -->
+  <!-- ========================================================= -->
+  <section id="contacts" class="py-24 bg-[#0F1218] border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-6 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-brand-accent text-xs uppercase tracking-wider font-semibold mb-3">
+              <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+              Связь с инженером
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+              Запишитесь на замер квартиры <span class="text-brand-accent">в удобное время</span>
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8">
+              Инженер приедет с лазерным дальномером, проверит геометрию стен, состояние проводки и сантехнических стояков, а затем подготовит прозрачную смету без скрытых платежей.
+            </p>
+
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-accent shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400">Центральный офис:</div>
+                  <div class="text-sm font-bold text-white">[г. Москва, Пресненская наб., д. [PLACEHOLDER]]</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-accent shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400">Телефон отдела продаж:</div>
+                  <a href="tel:+74950000000" class="text-sm font-bold text-white hover:text-brand-accent transition-colors">
+                    +7 (495) 000-00-00 (Ежедневно с 09:00 до 21:00)
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-accent shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400">Почта для дизайн-проектов:</div>
+                  <a href="mailto:info@buildpro-placeholder.ru" class="text-sm font-bold text-white hover:text-brand-accent transition-colors">
+                    info@[СТУДИЯ-РЕМОНТА].ru
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-8 border-t border-white/10">
+            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Прямой диалог с руководителем проектов:</div>
+            <div class="flex items-center gap-3">
+              <a href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BC%D0%B5%D1%80" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 text-xs font-bold transition-all flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                Чат WhatsApp
+              </a>
+              <a href="https://t.me/placeholder" target="_blank" class="px-4 py-2.5 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 hover:bg-sky-500/20 text-xs font-bold transition-all flex items-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                Telegram канал объектов
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="lg:col-span-6">
+          <div class="glass-card rounded-2xl p-8 border border-white/10 shadow-2xl">
+            <h3 class="text-2xl font-bold text-white mb-2">Вызвать инженера на бесплатный замер</h3>
+            <p class="text-xs text-gray-400 mb-6">
+              Инженер приедет в удобное время с лазерным дальномером и образцами материалов.
+            </p>
+
+            <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Ваше имя</label>
+                <input 
+                  type="text" 
+                  required 
+                  placeholder="Александр" 
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent text-sm"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Телефон для связи</label>
+                <input 
+                  type="tel" 
+                  required 
+                  placeholder="+7 (999) 000-00-00" 
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent text-sm"
+                />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Площадь (м²)</label>
+                  <input 
+                    type="number" 
+                    placeholder="65" 
+                    class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent text-sm"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Тип объекта</label>
+                  <select class="w-full px-4 py-3 rounded-xl bg-[#13161F] border border-white/10 text-white focus:outline-none focus:border-brand-accent text-sm">
+                    <option>Новостройка</option>
+                    <option>Вторичное жилье</option>
+                    <option>Загородный дом</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  class="w-full py-4 rounded-xl text-sm font-bold text-white bg-brand-accent hover:bg-brand-accentHover shadow-xl shadow-blue-500/25 transition-all flex items-center justify-center gap-2"
+                >
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Записаться на замер + зафиксировать подарок</span>
+                </button>
+              </div>
+
+              <p class="text-[10px] text-gray-400 text-center">
+                Нажимая кнопку, вы подтверждаете согласие на обработку персональных данных.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 10. FOOTER (ПОДВАЛ)                                       -->
+  <!-- ========================================================= -->
+  <footer class="bg-[#07090C] border-t border-white/5 py-12 text-sm text-gray-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-white/5">
+        
+        <div class="space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-brand-accent">
+              <i data-lucide="hammer" class="w-4 h-4"></i>
+            </div>
+            <span class="text-base font-extrabold text-white uppercase">[СТУДИЯ РЕМОНТА]</span>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Комплексный ремонт и отделка квартир в Москве и Московской области. Собственные мастера, официальный договор и страхование каждого объекта.
+          </p>
+          <div class="text-[11px] text-gray-400">
+            ОГРН: [0000000000000] • ИНН: [0000000000]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Услуги</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#services" class="hover:text-brand-accent transition-colors">Капитальный ремонт</a></li>
+            <li><a href="#services" class="hover:text-brand-accent transition-colors">Ремонт «Комфорт +»</a></li>
+            <li><a href="#services" class="hover:text-brand-accent transition-colors">Дизайнерский ремонт</a></li>
+            <li><a href="#services" class="hover:text-brand-accent transition-colors">Ремонт новостроек под ключ</a></li>
+            <li><a href="#services" class="hover:text-brand-accent transition-colors">Электромонтажные работы по ГОСТ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Навигация</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#calculator" class="hover:text-brand-accent transition-colors">Калькулятор сметы</a></li>
+            <li><a href="#before-after" class="hover:text-brand-accent transition-colors">Примеры «До / После»</a></li>
+            <li><a href="#portfolio" class="hover:text-brand-accent transition-colors">Портфолио сданных ЖК</a></li>
+            <li><a href="#workflow" class="hover:text-brand-accent transition-colors">5 этапов работы</a></li>
+            <li><a href="#guarantee" class="hover:text-brand-accent transition-colors">Гарантия 3 года</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Контакты</h4>
+          <div class="text-xs">
+            <span class="text-gray-400 block">Единый номер:</span>
+            <a href="tel:+74950000000" class="text-white font-bold hover:text-brand-accent transition-colors">+7 (495) 000-00-00</a>
+          </div>
+          <div class="text-xs">
+            <span class="text-gray-400 block">Почта для смет:</span>
+            <a href="mailto:info@buildpro.ru" class="text-white hover:text-brand-accent transition-colors">info@[СТУДИЯ].ru</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        <div>
+          © 2026 [НАЗВАНИЕ СТУДИИ РЕМОНТА]. Все права защищены. Коммерческий демонстрационный макет.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gray-400 transition-colors">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-gray-400 transition-colors">Пользовательское соглашение</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ========================================================= -->
+  <!-- 11. ПЛАВАЮЩАЯ КНОПКА WHATSAPP                             -->
+  <!-- ========================================================= -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center group">
+    <div class="hidden sm:block mr-3 px-3.5 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-xs font-semibold text-white shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+      Расчет сметы за 2 минуты в WhatsApp
+    </div>
+
+    <a 
+      href="https://wa.me/79990000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%B0" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center wa-glow shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300"
+      aria-label="Написать в WhatsApp"
+    >
+      <i data-lucide="message-circle" class="w-7 h-7 fill-white text-emerald-500"></i>
+    </a>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- 12. ОБЩЕЕ МОДАЛЬНОЕ ОКНО                                  -->
+  <!-- ========================================================= -->
+  <div id="lead-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 border border-white/15 shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors" aria-label="Закрыть">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-5">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-brand-accent text-xs font-semibold uppercase mb-2">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          Выезд и замер бесплатны
+        </div>
+        <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white">Вызов инженера на замер</h3>
+        <p class="text-xs sm:text-sm text-gray-400 mt-1">
+          Инженер перезвонит в течение 10 минут для согласования удобного дня и времени.
+        </p>
+      </div>
+
+      <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-gray-400 mb-1">Ваше имя</label>
+          <input 
+            type="text" 
+            required 
+            placeholder="Сергей" 
+            class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent text-sm"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-400 mb-1">Номер телефона</label>
+          <input 
+            type="tel" 
+            required 
+            placeholder="+7 (999) 000-00-00" 
+            class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent text-sm"
+          />
+        </div>
+
+        <input type="hidden" id="modal-details" value="">
+
+        <div class="p-3 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 flex items-center gap-2.5">
+          <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+          <span>Фиксация подарка и условий текущей акции</span>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-4 rounded-xl text-sm font-bold text-white bg-brand-accent hover:bg-brand-accentHover shadow-xl shadow-blue-500/25 transition-all"
+        >
+          Подтвердить запись на замер
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT: BEFORE/AFTER SLIDER, CALCULATOR, FILTERS      -->
+  <!-- ========================================================= -->
+  <script>
+    lucide.createIcons();
+
+    // -------------------------------------------------------------
+    // BEFORE / AFTER SLIDER LOGIC
+    // -------------------------------------------------------------
+    const sliderContainer = document.getElementById('ba-slider');
+    const beforeWrapper = document.getElementById('ba-before');
+    const beforeImg = document.getElementById('ba-before-img');
+    const handle = document.getElementById('ba-handle');
+
+    let isSliding = false;
+
+    function updateSlider(x) {
+      const rect = sliderContainer.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      if (pos < 0) pos = 0;
+      if (pos > 1) pos = 1;
+
+      const percentage = pos * 100;
+      beforeWrapper.style.width = percentage + '%';
+      handle.style.left = percentage + '%';
+      beforeImg.style.width = rect.width + 'px';
+    }
+
+    // Set initial size of before-img
+    window.addEventListener('resize', () => {
+      beforeImg.style.width = sliderContainer.getBoundingClientRect().width + 'px';
+    });
+    setTimeout(() => {
+      beforeImg.style.width = sliderContainer.getBoundingClientRect().width + 'px';
+    }, 100);
+
+    // Mouse Events
+    sliderContainer.addEventListener('mousedown', (e) => {
+      isSliding = true;
+      updateSlider(e.clientX);
+    });
+    window.addEventListener('mouseup', () => { isSliding = false; });
+    window.addEventListener('mousemove', (e) => {
+      if (!isSliding) return;
+      updateSlider(e.clientX);
+    });
+
+    // Touch Events for Mobile
+    sliderContainer.addEventListener('touchstart', (e) => {
+      isSliding = true;
+      updateSlider(e.touches[0].clientX);
+    });
+    window.addEventListener('touchend', () => { isSliding = false; });
+    window.addEventListener('touchmove', (e) => {
+      if (!isSliding) return;
+      updateSlider(e.touches[0].clientX);
+    });
+
+
+    // -------------------------------------------------------------
+    // RENOVATION CALCULATOR STATE & LOGIC
+    // -------------------------------------------------------------
+    let rState = {
+      objectMultiplier: 1.0,
+      objectName: 'Новостройка',
+      basePricePerMeter: 14500,
+      baseTimelineDays: 45,
+      className: 'Капитальный',
+      area: 65,
+      bathroomsExtra: 0,
+      bathroomsName: '1 совмещенный',
+      materialsIncluded: true,
+      giftName: '3D-дизайн проект',
+      totalFormatted: '942 500'
+    };
+
+    function selectObjectType(type, multiplier, btn) {
+      rState.objectMultiplier = multiplier;
+      const names = { newbuild: 'Новостройка', secondary: 'Вторичное жилье', cottage: 'Коттедж / Дом' };
+      rState.objectName = names[type] || 'Новостройка';
+
+      document.querySelectorAll('.obj-btn').forEach(b => {
+        b.classList.remove('border-brand-accent', 'bg-blue-500/10');
+        b.classList.add('border-white/10', 'bg-white/5');
+      });
+      btn.classList.remove('border-white/10', 'bg-white/5');
+      btn.classList.add('border-brand-accent', 'bg-blue-500/10');
+
+      document.getElementById('sum-obj').textContent = rState.objectName;
+      calculateRenovationTotal();
+    }
+
+    function selectRenovationClass(type, pricePerMeter, daysBase, btn) {
+      rState.basePricePerMeter = pricePerMeter;
+      rState.baseTimelineDays = daysBase;
+      const names = { capital: 'Капитальный', comfort: 'Комфорт +', designer: 'Дизайнерский' };
+      rState.className = names[type] || 'Капитальный';
+
+      document.querySelectorAll('.class-btn').forEach(b => {
+        b.classList.remove('border-brand-accent', 'bg-blue-500/10');
+        b.classList.add('border-white/10', 'bg-white/5');
+      });
+      btn.classList.remove('border-white/10', 'bg-white/5');
+      btn.classList.add('border-brand-accent', 'bg-blue-500/10');
+
+      document.getElementById('sum-class').textContent = rState.className;
+      calculateRenovationTotal();
+    }
+
+    function updateArea(val) {
+      rState.area = parseInt(val, 10);
+      document.getElementById('area-display').textContent = rState.area;
+      document.getElementById('sum-area').textContent = rState.area + ' м²';
+      calculateRenovationTotal();
+    }
+
+    function updateBathrooms(cost, name) {
+      rState.bathroomsExtra = cost;
+      rState.bathroomsName = name;
+      document.getElementById('sum-bath').textContent = name;
+      calculateRenovationTotal();
+    }
+
+    function updateMaterials(included) {
+      rState.materialsIncluded = included;
+      document.getElementById('sum-mat').textContent = included ? 'Под ключ (-20%)' : 'Только работы';
+      document.getElementById('sum-mat').className = included ? 'font-semibold text-emerald-400' : 'font-semibold text-gray-300';
+      calculateRenovationTotal();
+    }
+
+    function calculateRenovationTotal() {
+      // Rough material cost approx 6,500 ₽/m² if included
+      const materialsRate = rState.materialsIncluded ? 6500 : 0;
+      
+      const workTotal = (rState.basePricePerMeter * rState.area * rState.objectMultiplier);
+      const materialsTotal = (materialsRate * rState.area);
+      const total = workTotal + materialsTotal + rState.bathroomsExtra;
+
+      // Rounded to nearest 500
+      const rounded = Math.round(total / 500) * 500;
+      rState.totalFormatted = rounded.toLocaleString('ru-RU');
+
+      // Timeline estimation: base days + (area * 0.35)
+      const estDays = Math.round(rState.baseTimelineDays + (rState.area * 0.32));
+      const timelineText = `${estDays}-${estDays + 12} дней`;
+
+      document.getElementById('calc-total-price').textContent = rState.totalFormatted;
+      document.getElementById('calc-timeline').textContent = timelineText;
+    }
+
+    function sendRenovationToWhatsApp() {
+      const selectedGift = document.querySelector('input[name="gift"]:checked')?.value || '3D-дизайн проект';
+      const text = `Здравствуйте! Рассчитал ориентировочную стоимость ремонта на сайте:%0A` +
+        `• Объект: ${rState.objectName}%0A` +
+        `• Класс ремонта: ${rState.className}%0A` +
+        `• Площадь: ${rState.area} м²%0A` +
+        `• Санузлы: ${rState.bathroomsName}%0A` +
+        `• Материалы: ${rState.materialsIncluded ? 'Под ключ со скидкой 20%' : 'Свои'}%0A` +
+        `• Расчетная сумма: от ${rState.totalFormatted} ₽.%0A` +
+        `• Выбранный подарок: ${selectedGift}.%0A%0A` +
+        `Хочу записаться на бесплатный лазерный замер и зафиксировать условия!`;
+
+      window.open(`https://wa.me/79990000000?text=${text}`, '_blank');
+    }
+
+    function openModalWithRenovationCalc() {
+      const selectedGift = document.querySelector('input[name="gift"]:checked')?.value || '3D-дизайн проект';
+      const summary = `Ремонт ${rState.className}, ${rState.area} м², ${rState.objectName}. Сумма: от ${rState.totalFormatted} ₽. Подарок: ${selectedGift}`;
+      document.getElementById('modal-details').value = summary;
+      openModal('Фиксация сметы и подарка');
+    }
+
+    // -------------------------------------------------------------
+    // PORTFOLIO FILTERS
+    // -------------------------------------------------------------
+    function filterPortfolio(category, btn) {
+      document.querySelectorAll('.p-filter-btn').forEach(b => {
+        b.classList.remove('bg-brand-accent', 'text-white', 'font-bold');
+        b.classList.add('text-gray-300', 'font-medium');
+      });
+      btn.classList.remove('text-gray-300', 'font-medium');
+      btn.classList.add('bg-brand-accent', 'text-white', 'font-bold');
+
+      document.querySelectorAll('.p-card').forEach(card => {
+        if (category === 'all' || card.getAttribute('data-cat') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // MODAL WINDOW MANAGEMENT
+    // -------------------------------------------------------------
+    function openModal(title) {
+      if (title) document.getElementById('modal-title').textContent = title;
+      document.getElementById('lead-modal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('lead-modal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('lead-modal');
+      if (e.target === modal) closeModal();
+    });
+
+    function handleModalSubmit(e) {
+      e.preventDefault();
+      alert('Спасибо! Инженер свяжется с вами в течение 10 минут для согласования точного времени замера.');
+      closeModal();
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      alert('Заявка принята! Главный инженер уже рассчитывает первичную спецификацию.');
+      e.target.reset();
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    // Initial calculation
+    calculateRenovationTotal();
+  </script>
+</body>
+</html>
